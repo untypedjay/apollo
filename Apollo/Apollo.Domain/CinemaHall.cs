@@ -1,6 +1,6 @@
 ﻿namespace Apollo.Domain
 {
-    class CinemaHall
+    public class CinemaHall
     {
         public string Name { get; set; }
         public int RowAmount { get; set; }

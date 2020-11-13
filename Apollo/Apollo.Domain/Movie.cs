@@ -10,6 +10,6 @@ namespace Apollo.Domain
         public double Length { get; set; }
         public string Actors { get; set; }
         public string ImageURL { get; set; }
-        public string trailerURL { get; set; }
+        public string TrailerURL { get; set; }
     }
 }

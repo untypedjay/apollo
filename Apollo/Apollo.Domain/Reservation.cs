@@ -1,6 +1,6 @@
 ﻿namespace Apollo.Domain
 {
-    class Reservation
+    public class Reservation
     {
         public long Id { get; set; }
         public int MaxSeats { get; set; }
