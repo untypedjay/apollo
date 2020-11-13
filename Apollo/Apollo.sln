@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Core", "Apollo.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Domain", "Apollo.Domain\Apollo.Domain.csproj", "{16888B1B-BCC7-47E7-8423-C156F5AA77E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Core.Interface", "Apollo.Core.Interface\Apollo.Core.Interface.csproj", "{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{16888B1B-BCC7-47E7-8423-C156F5AA77E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16888B1B-BCC7-47E7-8423-C156F5AA77E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16888B1B-BCC7-47E7-8423-C156F5AA77E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
