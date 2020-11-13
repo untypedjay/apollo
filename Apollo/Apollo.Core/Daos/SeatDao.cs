@@ -6,39 +6,39 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Daos
 {
-    public abstract class SeatCategoryDao : ISeatCategoryDao
+    public abstract class SeatDao : ISeatDao
     {
-        public Task<bool> DeleteAsync(SeatCategory seatCategory)
+        public Task<bool> DeleteAsync(Seat seat)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<SeatCategory>> FindAllAsync()
+        public Task<IEnumerable<Seat>> FindAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<SeatCategory> FindByNameAsync(string name)
+        public Task<IEnumerable<Seat>> FindByCinemaHallAndSeatCategoryAsync(CinemaHall cinemaHall, SeatCategory seatCategory)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<SeatCategory>> FindByPriceGreaterAsync(decimal price)
+        public Task<IEnumerable<Seat>> FindByCinemaHallAsync(CinemaHall cinemaHall)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<SeatCategory>> FindByPriceLessAsync(decimal price)
+        public Task<IEnumerable<Seat>> FindByReservationAsync(Reservation reservation)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> InsertAsync(SeatCategory seatCategory)
+        public Task<bool> InsertAsync(Seat seat)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(SeatCategory seatCategory)
+        public Task<bool> UpdateAsync(Seat seat)
         {
             throw new NotImplementedException();
         }
