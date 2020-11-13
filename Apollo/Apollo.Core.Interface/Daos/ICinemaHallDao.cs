@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Daos
 {
-    interface ICinemaHallDao
+    public interface ICinemaHallDao
     {
         Task<bool> InsertAsync(CinemaHall cinemaHall);
         Task<IEnumerable<CinemaHall>> FindAllAsync();

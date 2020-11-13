@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Daos
 {
-    interface IMovieDao
+    public interface IMovieDao
     {
         Task<bool> InsertAsync(Movie movie);
         Task<IEnumerable<Movie>> FindAllAsync();

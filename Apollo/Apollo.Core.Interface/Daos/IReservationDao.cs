@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Daos
 {
-    interface IReservationDao
+    public interface IReservationDao
     {
         Task<bool> InsertAsync(Reservation reservation);
         Task<IEnumerable<Reservation>> FindAllAsync();

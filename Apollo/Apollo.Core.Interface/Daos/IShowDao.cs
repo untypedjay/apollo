@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Daos
 {
-    interface IShowDao
+    public interface IShowDao
     {
         Task<bool> InsertAsync(Show show);
         Task<IEnumerable<Show>> FindAllAsync();

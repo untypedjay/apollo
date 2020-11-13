@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Daos
 {
-    interface ISeatCategoryDao
+    public interface ISeatCategoryDao
     {
         Task<bool> InsertAsync(SeatCategory seatCategory);
         Task<IEnumerable<SeatCategory>> FindAllAsync();
