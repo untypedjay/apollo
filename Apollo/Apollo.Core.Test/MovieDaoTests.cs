@@ -19,7 +19,7 @@ namespace Apollo.Core.Test
 
             IMovieDao movieDao = new MSSQLMovieDao(connectionFactory);
 
-            ICollection<Movie> movies = (ICollection<Movie>)await movieDao.FindAllAsync();
+            ICollection<Movie> movies = (ICollection<Movie>) await movieDao.FindAllAsync();
             Assert.Equal(101, movies.Count);
         }
     }

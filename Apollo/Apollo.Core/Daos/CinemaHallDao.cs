@@ -1,6 +1,7 @@
 ﻿using Apollo.Core.Interface.Daos;
 using Apollo.Domain;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace Apollo.Core.Daos
@@ -14,29 +15,55 @@ namespace Apollo.Core.Daos
             template = new AdoTemplate(connectionFactory);
         }
 
-        public Task<bool> DeleteAsync(CinemaHall cinemaHall)
+        public virtual async Task<bool> DeleteAsync(CinemaHall cinemaHall)
         {
-            throw new System.NotImplementedException();
+            return (await template.ExecuteAsync(
+                "DELETE FROM CinemaHall WHERE HallName=@hn",
+                new QueryParameter("@tit", cinemaHall.Name)
+                )) == 1;
         }
 
-        public Task<IEnumerable<CinemaHall>> FindAllAsync()
+        public virtual async Task<IEnumerable<CinemaHall>> FindAllAsync()
         {
-            throw new System.NotImplementedException();
+            return await template.QueryAsync<CinemaHall>("SELECT * FROM CinemaHall", MapRowToCinemaHall);
         }
 
-        public Task<CinemaHall> FindByNameAsync(string name)
+        public virtual async Task<CinemaHall> FindByNameAsync(string name)
         {
-            throw new System.NotImplementedException();
+            return await template.QuerySingleAsync<CinemaHall>(
+                "SELECT * FROM CinemaHall WHERE HallName=@hn",
+                MapRowToCinemaHall,
+                new QueryParameter("@hn", name));
         }
 
-        public Task<bool> InsertAsync(CinemaHall cinemaHall)
+        public virtual async Task<bool> InsertAsync(CinemaHall cinemaHall)
         {
-            throw new System.NotImplementedException();
+            return (await template.ExecuteAsync(
+                "INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES (@hn, @ra, @sa)",
+                new QueryParameter("@hn", cinemaHall.Name),
+                new QueryParameter("@ra", cinemaHall.RowAmount),
+                new QueryParameter("@sa", cinemaHall.SeatAmount)
+                )) == 1;
         }
 
-        public Task<bool> UpdateAsync(CinemaHall cinemaHall)
+        public virtual async Task<bool> UpdateAsync(CinemaHall cinemaHall)
         {
-            throw new System.NotImplementedException();
+            return (await template.ExecuteAsync(
+                "UPDATE CinemaHall SET RowAmount=@ra, SeatAmount=@sa WHERE HallName=@hn",
+                new QueryParameter("@ra", cinemaHall.RowAmount),
+                new QueryParameter("@sa", cinemaHall.SeatAmount),
+                new QueryParameter("@hn", cinemaHall.Name)
+                )) == 1;
+        }
+
+        private CinemaHall MapRowToCinemaHall(IDataRecord row)
+        {
+            return new CinemaHall
+            {
+                Name = (string)row["HallName"],
+                RowAmount = (int)row["RowAmount"],
+                SeatAmount = (int)row["SeatAmount"]
+            };
         }
     }
 }
