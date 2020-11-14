@@ -31,27 +31,48 @@ namespace Apollo.Core.Daos
 
         public virtual async Task<IEnumerable<Movie>> FindByGenreAsync(string genre)
         {
-            throw new System.NotImplementedException();
+            return await template.QueryAsync<Movie>(
+                "SELECT * FROM Movie WHERE Genre=@genre",
+                MapRowToMovie,
+                new QueryParameter("@genre", genre));
         }
 
         public virtual async Task<IEnumerable<Movie>> FindByLengthGreaterAsync(double length)
         {
-            throw new System.NotImplementedException();
+            return await template.QueryAsync<Movie>(
+                "SELECT * FROM Movie WHERE MovieLength>@length",
+                MapRowToMovie,
+                new QueryParameter("@length", length));
         }
 
         public virtual async Task<IEnumerable<Movie>> FindByLengthLessAsync(double length)
         {
-            throw new System.NotImplementedException();
+            return await template.QueryAsync<Movie>(
+                "SELECT * FROM Movie WHERE MovieLength<@length",
+                MapRowToMovie,
+                new QueryParameter("@length", length));
         }
 
         public virtual async Task<Movie> FindByTitleAsync(string title)
         {
-            throw new System.NotImplementedException();
+            return await template.QuerySingleAsync<Movie>(
+                "SELECT * FROM Movie WHERE Title=@title",
+                MapRowToMovie,
+                new QueryParameter("@title", title));
         }
 
         public virtual async Task<bool> InsertAsync(Movie movie)
         {
-            throw new System.NotImplementedException();
+            return (await template.ExecuteAsync(
+                "INSERT INTO Movie (Title, MovieDescription, Genre, MovieLength, Actors, ImageURL, TrailerURL) VALUES (@tit, @md, @gr, @ml, @act, @iu, @tu)",
+                new QueryParameter("@tit", movie.Title),
+                new QueryParameter("@md", movie.Description),
+                new QueryParameter("@gr", movie.Genre),
+                new QueryParameter("@ml", movie.Length),
+                new QueryParameter("@act", movie.Actors),
+                new QueryParameter("@iu", movie.ImageURL),
+                new QueryParameter("@tu", movie.TrailerURL)
+                )) == 1;
         }
 
         public virtual async Task<bool> UpdateAsync(Movie movie)

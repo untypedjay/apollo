@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Apollo.Core.Delegates;
@@ -47,6 +48,11 @@ namespace Apollo.Core
                 dbParam.Value = p.Value;
                 command.Parameters.Add(dbParam);
             }
+        }
+
+        public async Task<T> QuerySingleAsync<T>(string sql, RowMapper<T> rowMapper, params QueryParameter[] parameters)
+        {
+            return (await QueryAsync(sql, rowMapper, parameters)).SingleOrDefault();
         }
 
         public async Task<int> ExecuteAsync(string sql, params QueryParameter[] parameters)
