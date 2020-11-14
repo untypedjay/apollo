@@ -15,32 +15,32 @@ namespace Apollo.Core.Daos
             template = new AdoTemplate(connectionFactory);
         }
 
-        public Task<bool> DeleteAsync(Reservation reservation)
+        public virtual async Task<bool> DeleteAsync(Reservation reservation)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Reservation>> FindAllAsync()
+        public virtual async Task<IEnumerable<Reservation>> FindAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Reservation> FindByIdAsync(long id)
+        public virtual async Task<Reservation> FindByIdAsync(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Reservation>> FindByShow(Show show)
+        public virtual async Task<IEnumerable<Reservation>> FindByShow(Show show)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> InsertAsync(Reservation reservation)
+        public virtual async Task<bool> InsertAsync(Reservation reservation)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(Reservation reservation)
+        public virtual async Task<bool> UpdateAsync(Reservation reservation)
         {
             throw new NotImplementedException();
         }

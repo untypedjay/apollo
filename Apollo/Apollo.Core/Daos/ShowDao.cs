@@ -15,42 +15,42 @@ namespace Apollo.Core.Daos
             template = new AdoTemplate(connectionFactory);
         }
 
-        public Task<bool> DelegeAsync(Show show)
+        public virtual async Task<bool> DelegeAsync(Show show)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Show>> FindAllAsync()
+        public virtual async Task<IEnumerable<Show>> FindAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Show>> FindByCinemaHall(CinemaHall cinemaHall)
+        public virtual async Task<IEnumerable<Show>> FindByCinemaHall(CinemaHall cinemaHall)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Show>> FindByDateAsync(DateTime date)
+        public virtual async Task<IEnumerable<Show>> FindByDateAsync(DateTime date)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Show>> FindByExactDateAsync(DateTime date)
+        public virtual async Task<IEnumerable<Show>> FindByExactDateAsync(DateTime date)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Show>> FindByMovie(Movie movie)
+        public virtual async Task<IEnumerable<Show>> FindByMovie(Movie movie)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> InsertAsync(Show show)
+        public virtual async Task<bool> InsertAsync(Show show)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(Show show)
+        public virtual async Task<bool> UpdateAsync(Show show)
         {
             throw new NotImplementedException();
         }

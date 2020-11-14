@@ -16,9 +16,12 @@ namespace Apollo.Core.Daos
             template = new AdoTemplate(connectionFactory);
         }
 
-        public Task<bool> DeleteAsync(Movie movie)
+        public virtual async Task<bool> DeleteAsync(Movie movie)
         {
-            throw new System.NotImplementedException();
+            return (await template.ExecuteAsync(
+                "DELETE FROM Movie WHERE Title=@tit",
+                new QueryParameter("@tit", movie.Title)
+                )) == 1;
         }
 
         public virtual async Task<IEnumerable<Movie>> FindAllAsync()
@@ -26,27 +29,27 @@ namespace Apollo.Core.Daos
             return await template.QueryAsync<Movie>("SELECT * FROM Movie", MapRowToMovie);
         }
 
-        public Task<IEnumerable<Movie>> FindByGenreAsync(string genre)
+        public virtual async Task<IEnumerable<Movie>> FindByGenreAsync(string genre)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<Movie>> FindByLengthGreaterAsync(double length)
+        public virtual async Task<IEnumerable<Movie>> FindByLengthGreaterAsync(double length)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<Movie>> FindByLengthLessAsync(double length)
+        public virtual async Task<IEnumerable<Movie>> FindByLengthLessAsync(double length)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<Movie> FindByTitleAsync(string title)
+        public virtual async Task<Movie> FindByTitleAsync(string title)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> InsertAsync(Movie movie)
+        public virtual async Task<bool> InsertAsync(Movie movie)
         {
             throw new System.NotImplementedException();
         }
