@@ -39,6 +39,30 @@ namespace Apollo.Core
             }
         }
 
+        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, RowMapperAsync<T> rowMapperAsync, params QueryParameter[] parameters)
+        {
+            using (DbConnection connection = await connectionFactory.CreateConnectionAsync())
+            using (DbCommand command = connection.CreateCommand())
+            {
+                command.CommandText = sql;
+
+                AddParameters(command, parameters);
+
+                var items = new List<T>();
+                T currentResult;
+                using (DbDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    while (reader.Read())
+                    {
+                        currentResult = await rowMapperAsync(reader);
+                        items.Add(currentResult);
+                    }
+                }
+
+                return items;
+            }
+        }
+
         private void AddParameters(DbCommand command, QueryParameter[] parameters)
         {
             foreach (var p in parameters)
@@ -53,6 +77,11 @@ namespace Apollo.Core
         public async Task<T> QuerySingleAsync<T>(string sql, RowMapper<T> rowMapper, params QueryParameter[] parameters)
         {
             return (await QueryAsync(sql, rowMapper, parameters)).SingleOrDefault();
+        }
+
+        public async Task<T> QuerySingleAsync<T>(string sql, RowMapperAsync<T> rowMapperAsync, params QueryParameter[] parameters)
+        {
+            return (await QueryAsync(sql, rowMapperAsync, parameters)).SingleOrDefault();
         }
 
         public async Task<int> ExecuteAsync(string sql, params QueryParameter[] parameters)
