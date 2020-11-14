@@ -5,7 +5,7 @@ CREATE TABLE Movie (
   MovieLength FLOAT CHECK(MovieLength BETWEEN 1.0 AND 500.0),
   Actors VARCHAR(500),
   ImageURL VARCHAR(500),
-  TrailerURL VARCHAR(500)
+  TrailerURL VARCHAR(3000)
 );
 
 CREATE TABLE SeatCategory (

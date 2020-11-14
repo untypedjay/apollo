@@ -10,7 +10,6 @@ namespace Apollo.Core.Test
 {
     public class MovieDaoTests
     {
-        static string TestDirectory = "C:\\Users\\Manish\\Documents\\apollo\\Apollo\\Apollo.Core.Test";
         static string BaseDirectory = Directory.GetCurrentDirectory() + "\\..\\..\\..\\";
         [Fact]
         public async void FindAllAsyncTest()
@@ -21,7 +20,7 @@ namespace Apollo.Core.Test
             IMovieDao movieDao = new MSSQLMovieDao(connectionFactory);
 
             ICollection<Movie> movies = (ICollection<Movie>)await movieDao.FindAllAsync();
-            Assert.Equal(2, movies.Count);
+            Assert.Equal(101, movies.Count);
         }
     }
 }
