@@ -8,6 +8,13 @@ namespace Apollo.Core.Daos
 {
     public abstract class SeatCategoryDao : ISeatCategoryDao
     {
+        private readonly AdoTemplate template;
+
+        public SeatCategoryDao(IConnectionFactory connectionFactory)
+        {
+            template = new AdoTemplate(connectionFactory);
+        }
+
         public Task<bool> DeleteAsync(SeatCategory seatCategory)
         {
             throw new NotImplementedException();

@@ -8,6 +8,13 @@ namespace Apollo.Core.Daos
 {
     public abstract class ShowDao : IShowDao
     {
+        private readonly AdoTemplate template;
+
+        public ShowDao(IConnectionFactory connectionFactory)
+        {
+            template = new AdoTemplate(connectionFactory);
+        }
+
         public Task<bool> DelegeAsync(Show show)
         {
             throw new NotImplementedException();

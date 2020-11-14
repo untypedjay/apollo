@@ -8,6 +8,13 @@ namespace Apollo.Core.Daos
 {
     public abstract class ReservationDao : IReservationDao
     {
+        private readonly AdoTemplate template;
+
+        public ReservationDao(IConnectionFactory connectionFactory)
+        {
+            template = new AdoTemplate(connectionFactory);
+        }
+
         public Task<bool> DeleteAsync(Reservation reservation)
         {
             throw new NotImplementedException();

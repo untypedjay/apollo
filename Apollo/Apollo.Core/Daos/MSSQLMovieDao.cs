@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Apollo.Core.Daos
+﻿namespace Apollo.Core.Daos
 {
     public class MSSQLMovieDao : MovieDao
     {

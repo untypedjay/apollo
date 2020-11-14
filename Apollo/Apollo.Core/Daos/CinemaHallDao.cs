@@ -7,6 +7,13 @@ namespace Apollo.Core.Daos
 {
     public abstract class CinemaHallDao : ICinemaHallDao
     {
+        private readonly AdoTemplate template;
+
+        public CinemaHallDao(IConnectionFactory connectionFactory)
+        {
+            template = new AdoTemplate(connectionFactory);
+        }
+
         public Task<bool> DeleteAsync(CinemaHall cinemaHall)
         {
             throw new System.NotImplementedException();
