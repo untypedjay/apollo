@@ -22,7 +22,7 @@ namespace Apollo.Core.Daos
         public virtual async Task<bool> DeleteAsync(Show show)
         {
             return (await template.ExecuteAsync(
-                "DELETE FROM Movie WHERE StartsAt=@sa AND shows=@sh AND playsIn=@pi",
+                "DELETE FROM Show WHERE StartsAt=@sa AND shows=@sh AND playsIn=@pi",
                 new QueryParameter("@sa", show.StartsAt),
                 new QueryParameter("@sh", show.Movie.Title),
                 new QueryParameter("@pi", show.CinemaHall.Name)
@@ -34,7 +34,7 @@ namespace Apollo.Core.Daos
             return await template.QueryAsync<Show>("SELECT * FROM Show", MapRowToShow);
         }
 
-        public virtual async Task<IEnumerable<Show>> FindByCinemaHall(CinemaHall cinemaHall)
+        public virtual async Task<IEnumerable<Show>> FindByCinemaHallAsync(CinemaHall cinemaHall)
         {
             return await template.QueryAsync<Show>(
                 "SELECT * FROM Show WHERE playsIn=@ch",
@@ -50,7 +50,7 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@date", date));
         }
 
-        public virtual async Task<Show> FindByDateCinemaHallAndMovie(DateTime date, CinemaHall cinemaHall, Movie movie)
+        public virtual async Task<Show> FindByDateCinemaHallAndMovieAsync(DateTime date, CinemaHall cinemaHall, Movie movie)
         {
             return await template.QuerySingleAsync<Show>(
                 "SELECT * FROM Show WHERE StartsAt=@sa AND shows=@sh AND playsIn=@pi",
@@ -69,7 +69,7 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@de", new DateTime(date.Year, date.Month, date.Day, 23, 59, 59)));
         }
 
-        public virtual async Task<IEnumerable<Show>> FindByMovie(Movie movie)
+        public virtual async Task<IEnumerable<Show>> FindByMovieAsync(Movie movie)
         {
             return await template.QueryAsync<Show>(
                 "SELECT * FROM Show WHERE shows=@title",

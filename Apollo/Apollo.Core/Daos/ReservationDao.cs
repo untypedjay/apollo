@@ -87,7 +87,7 @@ namespace Apollo.Core.Daos
             return new Reservation(
                 (long)row["Id"],
                 (int)row["MaxSeats"],
-                await showDao.FindByDateCinemaHallAndMovie(
+                await showDao.FindByDateCinemaHallAndMovieAsync(
                     (DateTime)row["showBegins"],
                     await cinemaHallDao.FindByNameAsync(row["showIn"].ToString()),
                     await movieDao.FindByTitleAsync(row["showMovie"].ToString()))

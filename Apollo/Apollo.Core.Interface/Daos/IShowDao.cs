@@ -9,11 +9,11 @@ namespace Apollo.Core.Interface.Daos
     {
         Task<bool> InsertAsync(Show show);
         Task<IEnumerable<Show>> FindAllAsync();
-        Task<Show> FindByDateCinemaHallAndMovie(DateTime date, CinemaHall cinemaHall, Movie movie);
+        Task<Show> FindByDateCinemaHallAndMovieAsync(DateTime date, CinemaHall cinemaHall, Movie movie);
         Task<IEnumerable<Show>> FindByDateAsync(DateTime date);
         Task<IEnumerable<Show>> FindByExactDateAsync(DateTime date);
-        Task<IEnumerable<Show>> FindByCinemaHall(CinemaHall cinemaHall);
-        Task<IEnumerable<Show>> FindByMovie(Movie movie);
+        Task<IEnumerable<Show>> FindByCinemaHallAsync(CinemaHall cinemaHall);
+        Task<IEnumerable<Show>> FindByMovieAsync(Movie movie);
         Task<bool> DeleteAsync(Show show);
     }
 }
