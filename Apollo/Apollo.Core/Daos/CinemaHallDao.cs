@@ -19,7 +19,7 @@ namespace Apollo.Core.Daos
         {
             return (await template.ExecuteAsync(
                 "DELETE FROM CinemaHall WHERE HallName=@hn",
-                new QueryParameter("@tit", cinemaHall.Name)
+                new QueryParameter("@hn", cinemaHall.Name)
                 )) == 1;
         }
 
@@ -58,12 +58,11 @@ namespace Apollo.Core.Daos
 
         private CinemaHall MapRowToCinemaHall(IDataRecord row)
         {
-            return new CinemaHall
-            {
-                Name = (string)row["HallName"],
-                RowAmount = (int)row["RowAmount"],
-                SeatAmount = (int)row["SeatAmount"]
-            };
+            return new CinemaHall(
+                (string)row["HallName"],
+                (int)row["RowAmount"],
+                (int)row["SeatAmount"]
+            );
         }
     }
 }
