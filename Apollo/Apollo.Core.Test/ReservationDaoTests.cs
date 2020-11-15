@@ -17,7 +17,6 @@ namespace Apollo.Core.Test
         IReservationDao reservationDao = new MSSQLReservationDao(connectionFactory);
         IShowDao showDao = new MSSQLShowDao(connectionFactory);
 
-
         [Fact]
         public async void InsertAsyncTest()
         {

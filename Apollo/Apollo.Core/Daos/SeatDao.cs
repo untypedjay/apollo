@@ -43,9 +43,9 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@sc", seatCategory.Name));
         }
 
-        public virtual async Task<Seat> FindByCinemaHallAsync(CinemaHall cinemaHall)
+        public virtual async Task<IEnumerable<Seat>> FindByCinemaHallAsync(CinemaHall cinemaHall)
         {
-            return await template.QuerySingleAsync<Seat>(
+            return await template.QueryAsync<Seat>(
                 "SELECT * FROM Seat WHERE locatedIn=@li",
                 MapRowToSeat,
                 new QueryParameter("@li", cinemaHall.Name));
@@ -54,10 +54,10 @@ namespace Apollo.Core.Daos
         public virtual async Task<IEnumerable<Seat>> FindByReservationAsync(Reservation reservation)
         {
             return await template.QueryAsync<Seat>(
-                "SELECT Seat.SeatNumber, RowNumber, locatedIn, category FROM Reservation" +
-                "INNER JOIN reservedSeat ON (Id = reservationId)" +
-                "INNER JOIN Seat ON (showIn = locatedIn AND seatRow = RowNumber AND reservedSeat.seatNumber = Seat.SeatNumber)" +
-                "WHERE Id=id",
+                "SELECT Seat.SeatNumber, RowNumber, locatedIn, category FROM Seat " +
+                "INNER JOIN reservedSeat ON (reservedSeat.seatNumber = Seat.SeatNumber AND reservedSeat.seatRow = Seat.RowNumber AND reservedSeat.seatLocation = Seat.locatedIn) " +
+                "INNER JOIN Reservation ON (Reservation.Id = reservedSeat.reservationId) " +
+                "WHERE Id=@id",
                 MapRowToSeat,
                 new QueryParameter("@id", reservation.Id));
         }
@@ -92,13 +92,12 @@ namespace Apollo.Core.Daos
             ICinemaHallDao cinemaHallDao = new MSSQLCinemaHallDao(connectionFactory);
             ISeatCategoryDao seatCategoryDao = new MSSQLSeatCategoryDao(connectionFactory);
 
-            return new Seat
-            {
-                SeatNumber = (int)row["SeatNumber"],
-                RowNumber = (int)row["RowNumber"],
-                CinemaHall = await cinemaHallDao.FindByNameAsync(row["locatedIn"].ToString()),
-                SeatCategory = await seatCategoryDao.FindByNameAsync(row["category"].ToString())
-            };
+            return new Seat(
+                (int)row["SeatNumber"],
+                (int)row["RowNumber"],
+                await cinemaHallDao.FindByNameAsync(row["locatedIn"].ToString()),
+                await seatCategoryDao.FindByNameAsync(row["category"].ToString())
+            );
         }
     }
 }
