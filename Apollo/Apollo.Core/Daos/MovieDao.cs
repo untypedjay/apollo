@@ -78,7 +78,7 @@ namespace Apollo.Core.Daos
         public virtual async Task<bool> UpdateAsync(Movie movie)
         {
             return (await template.ExecuteAsync(
-                "UPDATE Movie SET MovieDescription=@md, Genre=@gr, MovieLength=@ml, Actors=@act, ImageURL=@iu, TrailerURL@tu WHERE Title=@tit",
+                "UPDATE Movie SET MovieDescription=@md, Genre=@gr, MovieLength=@ml, Actors=@act, ImageURL=@iu, TrailerURL=@tu WHERE Title=@tit",
                 new QueryParameter("@md", movie.Description),
                 new QueryParameter("@gr", movie.Genre),
                 new QueryParameter("@ml", movie.Length),

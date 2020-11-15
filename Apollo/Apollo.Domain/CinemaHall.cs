@@ -12,6 +12,5 @@
             RowAmount = rowAmount;
             SeatAmount = seatAmount;
         }
-
     }
 }

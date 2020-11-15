@@ -41,7 +41,7 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@id", id));
         }
 
-        public virtual async Task<IEnumerable<Reservation>> FindByShow(Show show)
+        public virtual async Task<IEnumerable<Reservation>> FindByShowAsync(Show show)
         {
             return await template.QueryAsync<Reservation>(
                 "SELECT * FROM Reservation WHERE showBegins=@sb AND showMovie=@sm AND showIn=@si",
@@ -51,16 +51,16 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@si", show.CinemaHall.Name));
         }
 
-        public virtual async Task InsertAsync(Reservation reservation)
+        public virtual async Task<bool> InsertAsync(Reservation reservation)
         {
-            string SQL_INSERT = "INSERT INTO Reservation (MaxSeats, showBegins, showMovie, showIn) VALUES (@ms, @sb, @sm, @si)";
-            reservation.Id = Convert.ToInt64(await template.ExecuteScalarAsync<object>(
-                $"{SQL_INSERT};{LastInsertIdQuery}",
+            return (await template.ExecuteAsync(
+                "INSERT INTO Reservation (Id, MaxSeats, showBegins, showMovie, showIn) VALUES (@id, @ms, @sb, @sm, @si)",
                 new QueryParameter("@ms", reservation.MaxSeats),
                 new QueryParameter("@sb", reservation.Show.StartsAt),
                 new QueryParameter("@sm", reservation.Show.Movie.Title),
-                new QueryParameter("@si", reservation.Show.CinemaHall.Name)
-                ));
+                new QueryParameter("@si", reservation.Show.CinemaHall.Name),
+                new QueryParameter("@id", reservation.Id)
+                )) == 1;
         }
 
         public virtual async Task<bool> UpdateAsync(Reservation reservation)
@@ -84,15 +84,14 @@ namespace Apollo.Core.Daos
             ICinemaHallDao cinemaHallDao = new MSSQLCinemaHallDao(connectionFactory);
             IMovieDao movieDao = new MSSQLMovieDao(connectionFactory);
 
-            return new Reservation
-            {
-                Id = (long)row["Id"],
-                MaxSeats = (int)row["MaxSeats"],
-                Show = await showDao.FindByDateCinemaHallAndMovie(
+            return new Reservation(
+                (long)row["Id"],
+                (int)row["MaxSeats"],
+                await showDao.FindByDateCinemaHallAndMovie(
                     (DateTime)row["showBegins"],
                     await cinemaHallDao.FindByNameAsync(row["showIn"].ToString()),
                     await movieDao.FindByTitleAsync(row["showMovie"].ToString()))
-            };
+            );
         }
     }
 }

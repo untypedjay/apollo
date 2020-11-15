@@ -95,12 +95,11 @@ namespace Apollo.Core.Daos
             IMovieDao movieDao = new MSSQLMovieDao(connectionFactory);
             ICinemaHallDao cinemaHallDao = new MSSQLCinemaHallDao(connectionFactory);
 
-            return new Show
-            {
-                StartsAt = (DateTime)row["StartsAt"],
-                Movie = await movieDao.FindByTitleAsync(row["shows"].ToString()),
-                CinemaHall = await cinemaHallDao.FindByNameAsync(row["playsIn"].ToString())
-            };
+            return new Show(
+                (DateTime)row["StartsAt"],
+                await movieDao.FindByTitleAsync(row["shows"].ToString()),
+                await cinemaHallDao.FindByNameAsync(row["playsIn"].ToString())
+            );
         }
     }
 }
