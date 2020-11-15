@@ -50,6 +50,16 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@date", date));
         }
 
+        public virtual async Task<Show> FindByDateCinemaHallAndMovie(DateTime date, CinemaHall cinemaHall, Movie movie)
+        {
+            return await template.QuerySingleAsync<Show>(
+                "SELECT * FROM Show WHERE StartsAt=@sa AND shows=@sh AND playsIn=@pi",
+                MapRowToShow,
+                new QueryParameter("@sa", date),
+                new QueryParameter("@sh", movie.Title),
+                new QueryParameter("@pi", cinemaHall.Name));
+        }
+
         public virtual async Task<IEnumerable<Show>> FindByExactDateAsync(DateTime date)
         {
             return await template.QueryAsync<Show>(
