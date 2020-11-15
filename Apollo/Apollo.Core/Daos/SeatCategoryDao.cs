@@ -73,11 +73,10 @@ namespace Apollo.Core.Daos
 
         private SeatCategory MapRowToSeatCategory(IDataRecord row)
         {
-            return new SeatCategory
-            {
-                Name = (string)row["CategoryName"],
-                Price = (decimal)row["Price"]
-            };
+            return new SeatCategory(
+                (string)row["CategoryName"],
+                (decimal)row["Price"]
+            );
         }
     }
 }
