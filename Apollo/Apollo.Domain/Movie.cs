@@ -4,6 +4,17 @@ namespace Apollo.Domain
 {
     public class Movie
     {
+        public Movie(string title, string description, string genre, double length, string actors,  string imageURL, string trailerURL)
+        {
+            Title = title;
+            Description = description;
+            Genre = genre;
+            Length = length;
+            Actors = actors;
+            ImageURL = imageURL;
+            TrailerURL = trailerURL;
+        }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }

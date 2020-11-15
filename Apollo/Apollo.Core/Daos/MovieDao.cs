@@ -84,22 +84,22 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@ml", movie.Length),
                 new QueryParameter("@act", movie.Actors),
                 new QueryParameter("@iu", movie.ImageURL),
-                new QueryParameter("@tu", movie.TrailerURL)
+                new QueryParameter("@tu", movie.TrailerURL),
+                new QueryParameter("@tit", movie.Title)
                 )) == 1;
         }
 
         private Movie MapRowToMovie(IDataRecord row)
         {
-            return new Movie
-            {
-                Title = (string)row["Title"],
-                Description = (string)row["MovieDescription"],
-                Genre = (string)row["Genre"],
-                Length = (double)row["MovieLength"],
-                Actors = (string)row["Actors"],
-                ImageURL = (string)row["ImageURL"],
-                TrailerURL = (string)row["TrailerURL"]
-            };
+            return new Movie(
+                (string)row["Title"],
+                (string)row["MovieDescription"],
+                (string)row["Genre"],
+                (double)row["MovieLength"],
+                (string)row["Actors"],
+                (string)row["ImageURL"],
+                (string)row["TrailerURL"]
+            );
         }
     }
 }
