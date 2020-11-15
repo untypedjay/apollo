@@ -31,7 +31,6 @@ namespace Apollo.Core.Daos
 
         public virtual async Task<IEnumerable<Show>> FindAllAsync()
         {
-
             return await template.QueryAsync<Show>("SELECT * FROM Show", MapRowToShow);
         }
 
