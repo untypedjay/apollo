@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Core", "Apollo.Core\Apollo.Core.csproj", "{6A385FE1-3BD6-4166-BCDA-A79BAA439993}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Core", "Apollo.Core\Apollo.Core.csproj", "{6A385FE1-3BD6-4166-BCDA-A79BAA439993}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Domain", "Apollo.Domain\Apollo.Domain.csproj", "{16888B1B-BCC7-47E7-8423-C156F5AA77E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Domain", "Apollo.Domain\Apollo.Domain.csproj", "{16888B1B-BCC7-47E7-8423-C156F5AA77E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Core.Interface", "Apollo.Core.Interface\Apollo.Core.Interface.csproj", "{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Core.Interface", "Apollo.Core.Interface\Apollo.Core.Interface.csproj", "{C7F8BEEF-5BC4-4CB8-BF90-832870AD40B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Core.Test", "Apollo.Core.Test\Apollo.Core.Test.csproj", "{C1333CFA-FF10-4740-B014-2FC751BD982C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apollo.Core.Test", "Apollo.Core.Test\Apollo.Core.Test.csproj", "{C1333CFA-FF10-4740-B014-2FC751BD982C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.Terminal", "Apollo.Terminal\Apollo.Terminal.csproj", "{210BBAE5-6A9D-4406-A855-C0A8898A4E8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C1333CFA-FF10-4740-B014-2FC751BD982C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1333CFA-FF10-4740-B014-2FC751BD982C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1333CFA-FF10-4740-B014-2FC751BD982C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210BBAE5-6A9D-4406-A855-C0A8898A4E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210BBAE5-6A9D-4406-A855-C0A8898A4E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210BBAE5-6A9D-4406-A855-C0A8898A4E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210BBAE5-6A9D-4406-A855-C0A8898A4E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
