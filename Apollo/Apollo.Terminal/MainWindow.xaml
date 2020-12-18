@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Apollo.Terminal"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        mc:Ignorable="d" FontSize="18"
+        Title="Apollo Terminal" Height="450" Width="800">
+    <Button
+        x:Name="startButton"
+        Click="startButton_Click"
+        Padding="0,0,100,100"
+    >
+        <Button.Background>
+            <ImageBrush ImageSource="/wallpaper.jpg"/>
+        </Button.Background>
+        <Button.Content>
+            <TextBlock Foreground="White" FontSize="48" FontWeight="Bold">CLICK TO START</TextBlock>
+        </Button.Content>
+    </Button>
 </Window>
