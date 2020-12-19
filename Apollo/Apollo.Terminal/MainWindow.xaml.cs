@@ -17,7 +17,8 @@ namespace Apollo.Terminal
 
         private void startButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"Let's get started!");
+            ShowOverview showOverview = new ShowOverview();
+            showOverview.ShowDialog();
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
