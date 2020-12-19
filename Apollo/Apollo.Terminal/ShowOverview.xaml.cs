@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Apollo.Terminal.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,11 +18,13 @@ namespace Apollo.Terminal
     /// </summary>
     public partial class ShowOverview : Window
     {
+        private ShowOverviewViewModel showOverviewViewModel;
         public ShowOverview()
         {
             InitializeComponent();
+            showOverviewViewModel = new ShowOverviewViewModel();
 
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
