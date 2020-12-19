@@ -5,17 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Apollo.Terminal"
         mc:Ignorable="d" FontSize="18"
-        Title="Apollo Terminal" Height="450" Width="800">
+        Title="Apollo Terminal"
+        WindowState="Maximized"
+        WindowStyle="None"
+>
+    <Window.Resources>
+    </Window.Resources>
     <Button
         x:Name="startButton"
         Click="startButton_Click"
-        Padding="0,0,100,100"
     >
         <Button.Background>
             <ImageBrush ImageSource="/wallpaper.jpg"/>
         </Button.Background>
+        <Button.Style>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Button.Style>
         <Button.Content>
-            <TextBlock Foreground="White" FontSize="48" FontWeight="Bold">CLICK TO START</TextBlock>
+            <TextBlock
+                Foreground="White"
+                FontSize="48"
+                FontWeight="Bold"
+                Margin="950,650,0,0"
+            >
+                CLICK TO START
+            </TextBlock>
         </Button.Content>
     </Button>
 </Window>
