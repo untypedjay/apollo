@@ -30,7 +30,7 @@
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <UniformGrid Columns="4">
-                <ItemsControl ItemsSource="{Binding Shows}"
+                <ItemsControl ItemsSource="{Binding Shows}"/>
             </UniformGrid>
         </ScrollViewer>
     </DockPanel>

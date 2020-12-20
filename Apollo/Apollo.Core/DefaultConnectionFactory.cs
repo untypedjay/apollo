@@ -22,9 +22,9 @@ namespace Apollo.Core
 
         public DefaultConnectionFactory(string connectionString, string providerName)
         {
-            this.ConnectionString = connectionString;
-            this.ProviderName = providerName;
-            this.dbProviderFactory = DbUtil.GetDbProviderFactory(providerName);
+            ConnectionString = connectionString;
+            ProviderName = providerName;
+            dbProviderFactory = DbUtil.GetDbProviderFactory(providerName);
         }
 
         public string ConnectionString { get; }

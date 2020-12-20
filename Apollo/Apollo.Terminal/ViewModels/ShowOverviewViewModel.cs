@@ -8,7 +8,7 @@ namespace Apollo.Terminal.ViewModels
 {
     public class ShowOverviewViewModel
     {
-        private IShowService showService;
+        private readonly IShowService showService;
         public ShowOverviewViewModel(IShowService showService)
         {
             this.showService = showService ?? throw new ArgumentNullException(nameof(showService));

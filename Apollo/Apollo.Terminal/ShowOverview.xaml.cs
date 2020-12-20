@@ -1,15 +1,13 @@
-﻿using Apollo.Terminal.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Apollo.Core;
+using Apollo.Core.Daos;
+using Apollo.Core.Interface.Daos;
+using Apollo.Core.Interface.Services;
+using Apollo.Core.Services;
+using Apollo.Terminal.ViewModels;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Apollo.Terminal
 {
@@ -22,7 +20,8 @@ namespace Apollo.Terminal
         public ShowOverview()
         {
             InitializeComponent();
-            showOverviewViewModel = new ShowOverviewViewModel();
+
+            showOverviewViewModel = new ShowOverviewViewModel(ServiceFactory.GetShowService());
 
             PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
