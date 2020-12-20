@@ -1,11 +1,5 @@
 ﻿using Apollo.Core;
-using Apollo.Core.Daos;
-using Apollo.Core.Interface.Daos;
-using Apollo.Core.Interface.Services;
-using Apollo.Core.Services;
 using Apollo.Terminal.ViewModels;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
@@ -24,6 +18,8 @@ namespace Apollo.Terminal
             showOverviewViewModel = new ShowOverviewViewModel(ServiceFactory.GetShowService());
 
             PreviewKeyDown += new KeyEventHandler(HandleEsc);
+
+            Loaded += async (s, e) => await showOverviewViewModel.InitializeAsync();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
