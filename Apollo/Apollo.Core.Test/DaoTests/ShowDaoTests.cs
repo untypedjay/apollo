@@ -33,7 +33,7 @@ namespace Apollo.Core.Test
         public async void FindAllAsyncTest()
         {
             ICollection<Show> shows = (ICollection<Show>)await showDao.FindAllAsync();
-            Assert.Equal(121, shows.Count);
+            Assert.Equal(301, shows.Count);
         }
 
         [Fact]
@@ -49,14 +49,14 @@ namespace Apollo.Core.Test
         public async void FindByDateAsyncTest()
         {
             ICollection<Show> shows = (ICollection<Show>)await showDao.FindByDateAsync(new DateTime(2020, 11, 20, 00, 03, 18));
-            Assert.Equal(33, shows.Count);
+            Assert.Equal(213, shows.Count);
         }
 
         [Fact]
         public async void FindByExactDateAsyncTest()
         {
             ICollection<Show> shows = (ICollection<Show>)await showDao.FindByExactDateAsync(new DateTime(2020, 11, 20, 00, 03, 18));
-            Assert.Equal(4, shows.Count);
+            Assert.Equal(5, shows.Count);
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Apollo.Core.Test
         {
             CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX SAAL 1");
             ICollection<Show> shows = (ICollection<Show>)await showDao.FindByCinemaHallAsync(cinemaHall);
-            Assert.Equal(21, shows.Count);
+            Assert.Equal(40, shows.Count);
         }
 
         [Fact]

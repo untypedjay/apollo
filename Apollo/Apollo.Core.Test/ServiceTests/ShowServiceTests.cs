@@ -27,7 +27,7 @@ namespace Apollo.Core.Test.ServiceTests
         public async void GetShowsTodayTest()
         {
             var shows = (ICollection<Show>)await showService.GetShowsToday();
-            Assert.Equal(0, shows.Count);
+            Assert.Equal(4, shows.Count);
         }
     }
 }
