@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Apollo.Core\Apollo.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ServiceTests\" />
-  </ItemGroup>
-
 </Project>

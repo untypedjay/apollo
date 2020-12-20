@@ -18,6 +18,7 @@ namespace Apollo.Core.Test
         ICinemaHallDao cinemaHallDao = new MSSQLCinemaHallDao(connectionFactory);
         IMovieDao movieDao = new MSSQLMovieDao(connectionFactory);
 
+
         [Fact]
         public async void InsertAsyncTest()
         {
