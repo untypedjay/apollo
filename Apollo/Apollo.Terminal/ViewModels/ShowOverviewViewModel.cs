@@ -9,6 +9,8 @@ namespace Apollo.Terminal.ViewModels
     public class ShowOverviewViewModel
     {
         private readonly IShowService showService;
+        private ShowDetailsViewModel currentShow;
+
         public ShowOverviewViewModel(IShowService showService)
         {
             this.showService = showService ?? throw new ArgumentNullException(nameof(showService));
@@ -16,6 +18,15 @@ namespace Apollo.Terminal.ViewModels
         }
         
         public ObservableCollection<Show> Shows { get; }
+
+        public ShowDetailsViewModel CurrentShow
+        {
+            get => currentShow;
+            set
+            {
+                currentShow = value;
+            }
+        }
 
         public async Task InitializeAsync()
         {
@@ -26,6 +37,4 @@ namespace Apollo.Terminal.ViewModels
             }
         }
     }
-
-
 }

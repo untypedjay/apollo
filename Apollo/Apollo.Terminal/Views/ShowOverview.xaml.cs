@@ -1,6 +1,8 @@
 ﻿using Apollo.Core;
 using Apollo.Terminal.ViewModels;
+using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Apollo.Terminal
@@ -16,6 +18,7 @@ namespace Apollo.Terminal
             InitializeComponent();
 
             showOverviewViewModel = new ShowOverviewViewModel(ServiceFactory.GetShowService());
+            DataContext = showOverviewViewModel;
 
             PreviewKeyDown += new KeyEventHandler(HandleEsc);
 
@@ -24,7 +27,7 @@ namespace Apollo.Terminal
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Searching...");
+            MessageBox.Show($"{showOverviewViewModel.Shows.Count}");
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
@@ -32,6 +35,15 @@ namespace Apollo.Terminal
             if (e.Key == Key.Escape)
             {
                 Close();
+            }
+        }
+
+        private void showCardContainer_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
+            if (item != null)
+            {
+                MessageBox.Show($"{showOverviewViewModel.CurrentShow.Show}");
             }
         }
     }

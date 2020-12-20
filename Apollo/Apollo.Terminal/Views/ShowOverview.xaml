@@ -10,28 +10,32 @@
         WindowState="Maximized"
         WindowStyle="None"
 >
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type model:Show}">
-            <StackPanel>
-                <Image Source="{Binding Movie.ImageURL}"/>
-                <TextBlock Text="{Binding Movie.Title}"/>
-                <TextBlock Text="{Binding StartsAt}"/>
-            </StackPanel>
-        </DataTemplate>
-    </Window.Resources>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <ComboBox>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Width="auto" Margin="30">
+            <ComboBox Width="100">
                 <ComboBoxItem IsSelected="True">Title</ComboBoxItem>
                 <ComboBoxItem>Genre</ComboBoxItem>
             </ComboBox>
-            <TextBox></TextBox>
-            <Button x:Name="searchButton" Click="searchButton_Click">Search</Button>
+            <TextBox Width="300"></TextBox>
+            <Button x:Name="searchButton" Click="searchButton_Click" Width="100">Search</Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <UniformGrid Columns="4">
-                <ItemsControl ItemsSource="{Binding Shows}"/>
-            </UniformGrid>
+            <ListBox x:Name="showCardContainer" ItemsSource="{Binding Shows}" PreviewMouseDown="showCardContainer_PreviewMouseDown" Margin="30">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel x:Name="showCard" Background="Yellow" Width="300" DataContext="{Binding CurrentShow}">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="FontSize" Value="24"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="{Binding Movie.ImageURL}"/>
+                            <TextBlock Text="{Binding Movie.Title}"/>
+                            <TextBlock Text="{Binding StartsAt}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </ScrollViewer>
     </DockPanel>
 </Window>
