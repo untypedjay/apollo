@@ -10,6 +10,20 @@
         WindowState="Maximized"
         WindowStyle="None"
 >
+    <Window.Resources>
+        <DataTemplate x:Key="showTemplate">
+            <StackPanel x:Name="showCard" Background="Yellow" Width="300">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="24"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="{Binding Movie.ImageURL}"/>
+                <TextBlock Text="{Binding Movie.Title}"/>
+                <TextBlock Text="{Binding StartsAt}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Width="auto" Margin="30">
             <ComboBox Width="100">
@@ -20,22 +34,13 @@
             <Button x:Name="searchButton" Click="searchButton_Click" Width="100">Search</Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ListBox x:Name="showCardContainer" ItemsSource="{Binding Shows}" PreviewMouseDown="showCardContainer_PreviewMouseDown" Margin="30">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel x:Name="showCard" Background="Yellow" Width="300" DataContext="{Binding CurrentShow}">
-                            <StackPanel.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="FontSize" Value="24"/>
-                                </Style>
-                            </StackPanel.Resources>
-                            <Image Source="{Binding Movie.ImageURL}"/>
-                            <TextBlock Text="{Binding Movie.Title}"/>
-                            <TextBlock Text="{Binding StartsAt}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <ListBox
+                x:Name="showContainer"
+                ItemsSource="{Binding Shows}"
+                ItemTemplate="{StaticResource showTemplate}"
+                Margin="30"
+                PreviewMouseDown="showContainer_PreviewMouseDown"
+            />
         </ScrollViewer>
     </DockPanel>
 </Window>

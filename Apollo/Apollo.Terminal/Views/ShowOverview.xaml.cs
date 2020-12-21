@@ -1,6 +1,6 @@
 ﻿using Apollo.Core;
+using Apollo.Domain;
 using Apollo.Terminal.ViewModels;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -44,6 +44,15 @@ namespace Apollo.Terminal
             if (item != null)
             {
                 MessageBox.Show($"{showOverviewViewModel.CurrentShow.Show}");
+            }
+        }
+
+        private void showContainer_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(showContainer, e.OriginalSource as DependencyObject) as ListBoxItem;
+            if (item != null)
+            {
+                Show currentShow = (Show)item.DataContext;
             }
         }
     }
