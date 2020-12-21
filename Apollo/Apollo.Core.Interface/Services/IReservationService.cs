@@ -5,8 +5,8 @@ namespace Apollo.Core.Interface.Services
 {
     public interface IReservationService
     {
-        Task<long> CreateReservation(Show show, int seatNumber, int rowNumber);
+        Task<long> CreateReservation(Show show, int maxSeats, int seatNumber, int rowNumber);
         Task<bool> DeleteReservation(long id);
-        Task<bool> GetReservationById(long id);
+        Task<Reservation> GetReservationById(long id);
     }
 }
