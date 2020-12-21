@@ -26,5 +26,33 @@ namespace Apollo.Terminal.ViewModels
                 Shows.Add(show);
             }
         }
+
+        public async Task SearchByTitle(string searchTerm)
+        {
+            EmptyShowContainer();
+            var shows = await showService.GetShowsByMovieSearch(searchTerm);
+            foreach (var show in shows)
+            {
+                Shows.Add(show);
+            }
+        }
+
+        public async Task SearchByGenre(string searchTerm)
+        {
+            EmptyShowContainer();
+            var shows = await showService.GetShowsByGenreSearch(searchTerm);
+            foreach (var show in shows)
+            {
+                Shows.Add(show);
+            }
+        }
+
+        private void EmptyShowContainer()
+        {
+            for (int i = 0; i < Shows.Count; i++)
+            {
+                Shows.Remove(Shows[i]);
+            }
+        }
     }
 }

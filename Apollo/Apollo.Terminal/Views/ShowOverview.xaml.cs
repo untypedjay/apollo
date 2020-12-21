@@ -26,9 +26,17 @@ namespace Apollo.Terminal
             Loaded += async (s, e) => await showOverviewViewModel.InitializeAsync();
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        private async void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"{showOverviewViewModel.Shows.Count}");
+            string searchTerm = searchTextBox.Text;
+            if (searchTypeComboBox.Text == "Title")
+            {
+                await showOverviewViewModel.SearchByTitle(searchTerm);
+            }
+            else
+            {
+                await showOverviewViewModel.SearchByGenre(searchTerm);
+            }
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)

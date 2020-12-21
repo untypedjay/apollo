@@ -26,11 +26,11 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Width="auto" Margin="30">
-            <ComboBox Width="100">
+            <ComboBox x:Name="searchTypeComboBox" Width="100">
                 <ComboBoxItem IsSelected="True">Title</ComboBoxItem>
                 <ComboBoxItem>Genre</ComboBoxItem>
             </ComboBox>
-            <TextBox Width="300"></TextBox>
+            <TextBox x:Name="searchTextBox" Width="300"></TextBox>
             <Button x:Name="searchButton" Click="searchButton_Click" Width="100">Search</Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
