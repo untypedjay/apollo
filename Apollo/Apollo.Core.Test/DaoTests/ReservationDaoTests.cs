@@ -26,9 +26,10 @@ namespace Apollo.Core.Test
             Reservation reservation = new Reservation(300, 5, show);
             ICollection<Reservation> reservations = (ICollection<Reservation>)await reservationDao.FindAllAsync();
             Assert.Equal(40, reservations.Count);
-            await reservationDao.InsertAsync(reservation);
+            long reservationId = await reservationDao.InsertAsync(reservation);
             reservations = (ICollection<Reservation>)await reservationDao.FindAllAsync();
             Assert.Equal(41, reservations.Count);
+            Assert.NotEqual(300, reservationId);
             await reservationDao.DeleteAsync(reservation);
         }
 

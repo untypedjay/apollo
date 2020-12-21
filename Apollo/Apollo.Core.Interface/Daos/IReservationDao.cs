@@ -6,7 +6,7 @@ namespace Apollo.Core.Interface.Daos
 {
     public interface IReservationDao
     {
-        Task<bool> InsertAsync(Reservation reservation);
+        Task<long> InsertAsync(Reservation reservation);
         Task<IEnumerable<Reservation>> FindAllAsync();
         Task<Reservation> FindByIdAsync(long id);
         Task<IEnumerable<Reservation>> FindByShowAsync(Show show);

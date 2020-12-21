@@ -51,16 +51,17 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@si", show.CinemaHall.Name));
         }
 
-        public virtual async Task<bool> InsertAsync(Reservation reservation)
+        public virtual async Task<long> InsertAsync(Reservation reservation)
         {
-            return (await template.ExecuteAsync(
-                "INSERT INTO Reservation (Id, MaxSeats, showBegins, showMovie, showIn) VALUES (@id, @ms, @sb, @sm, @si)",
+            string SQL_INSERT = "INSERT INTO Reservation (MaxSeats, showBegins, showMovie, showIn) VALUES (@ms, @sb, @sm, @si)";
+            reservation.Id = Convert.ToInt32(await template.ExecuteScalarAsync<object>(
+                $"{SQL_INSERT};{LastInsertIdQuery}",
                 new QueryParameter("@ms", reservation.MaxSeats),
                 new QueryParameter("@sb", reservation.Show.StartsAt),
                 new QueryParameter("@sm", reservation.Show.Movie.Title),
-                new QueryParameter("@si", reservation.Show.CinemaHall.Name),
-                new QueryParameter("@id", reservation.Id)
-                )) == 1;
+                new QueryParameter("@si", reservation.Show.CinemaHall.Name)
+                ));
+            return reservation.Id;
         }
 
         public virtual async Task<bool> UpdateAsync(Reservation reservation)
