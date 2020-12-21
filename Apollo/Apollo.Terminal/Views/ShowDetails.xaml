@@ -24,14 +24,14 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0">
-                <TextBlock Text="{Binding Movie.Title}"/>
-                <TextBlock Text="{Binding Movie.Description}"/>
-                <TextBlock Text="{Binding StartsAt}"/>
-                <TextBlock Text="{Binding Movie.Genre}"/>
-                <TextBlock Text="{Binding Movie.Length}"/>
-                <TextBlock Text="{Binding CinemaHall.Name}"/>
+                <TextBlock Text="{Binding Show.Movie.Title}"/>
+                <TextBlock Text="{Binding Show.Movie.Description}"/>
+                <TextBlock Text="{Binding Show.StartsAt}"/>
+                <TextBlock Text="{Binding Show.Movie.Genre}"/>
+                <TextBlock Text="{Binding Show.Movie.Length}"/>
+                <TextBlock Text="{Binding Show.CinemaHall.Name}"/>
             </StackPanel>
-            <Image Grid.Column="1" Source="{Binding Movie.ImageURL}"/>
+            <Image Grid.Column="1" Source="{Binding Show.Movie.ImageURL}"/>
         </Grid>
     </DockPanel>
 </Window>
