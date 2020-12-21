@@ -38,13 +38,14 @@ namespace Apollo.Core.Daos
 
         public virtual async Task<bool> IsReservedAsync(Reservation reservation, int seatNumber, int seatRow)
         {
-            return (await template.ExecuteAsync(
-                "SELECT COUNT(*) FROM reservedSeat WHERE seatNumber=@sn AND seatRow=@sr AND seatLocation=@sl AND reservationId=@ri",
-                new QueryParameter("@sn", seatNumber),
-                new QueryParameter("@sr", seatRow),
-                new QueryParameter("@sl", reservation.Show.CinemaHall.Name),
-                new QueryParameter("@ri", reservation.Id)
-                )) == 1;
+            if (await DeleteAsync(reservation, seatNumber, seatRow))
+            {
+                await InsertAsync(reservation, seatNumber, seatRow);
+                return true;
+            } else
+            {
+                return false;
+            }
         }
     }
 }

@@ -18,8 +18,9 @@ namespace Apollo.Core
         static ISeatCategoryDao seatCategoryDao = new MSSQLSeatCategoryDao(connectionFactory);
         static ISeatDao seatDao = new MSSQLSeatDao(connectionFactory);
         static IShowDao showDao = new MSSQLShowDao(connectionFactory);
+        static IReservedSeatDao reservedSeatDao = new MSSQLReservedSeatDao(connectionFactory);
 
-        static DaoProvider daoProvider = new DaoProvider(cinemaHallDao, movieDao, reservationDao, seatCategoryDao, seatDao, showDao);
+        static DaoProvider daoProvider = new DaoProvider(cinemaHallDao, movieDao, reservationDao, seatCategoryDao, seatDao, showDao, reservedSeatDao);
 
         public static ShowService GetShowService()
         {
