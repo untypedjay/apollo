@@ -12,7 +12,7 @@ namespace Apollo.Terminal
         {
             InitializeComponent();
 
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+            PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
