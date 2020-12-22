@@ -9,6 +9,17 @@
         WindowState="Maximized"
         WindowStyle="None"
 >
+    <Window.Resources>
+        <DataTemplate x:Key="seatTemplate">
+            <Button Width="100">
+                <StackPanel>
+                    <TextBlock Text="{Binding SeatNumber}"/>
+                    <TextBlock Text="{Binding RowNumber}"/>
+                    <TextBlock Text="{Binding SeatCategory.Name}"/>
+                </StackPanel>
+            </Button>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
             <Button x:Name="cancelButton" PreviewMouseDown="cancelButton_PreviewMouseDown">Cancel</Button>
@@ -32,6 +43,14 @@
                 <TextBlock Text="{Binding Show.CinemaHall.Name}"/>
             </StackPanel>
             <Image Grid.Column="1" Source="{Binding Show.Movie.ImageURL}"/>
+            <ListBox
+                Grid.Column="0"
+                Grid.Row="1"
+                x:Name="cinemaLayoutContainer"
+                ItemsSource="{Binding Seats}"
+                ItemTemplate="{StaticResource seatTemplate}"
+                PreviewMouseDown="cinemaLayoutContainer_PreviewMouseDown"
+            />
         </Grid>
     </DockPanel>
 </Window>

@@ -1,16 +1,9 @@
-﻿using Apollo.Domain;
+﻿using Apollo.Core;
+using Apollo.Domain;
 using Apollo.Terminal.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Apollo.Terminal.Views
 {
@@ -23,7 +16,7 @@ namespace Apollo.Terminal.Views
         public ShowDetails(Show currentShow)
         {
             InitializeComponent();
-            showDetailsViewModel = new ShowDetailsViewModel(currentShow);
+            showDetailsViewModel = new ShowDetailsViewModel(currentShow, ServiceFactory.GetSeatService());
             DataContext = showDetailsViewModel;
 
             PreviewKeyDown += new KeyEventHandler(HandleEsc);
@@ -46,6 +39,15 @@ namespace Apollo.Terminal.Views
             if (e.Key == Key.Escape)
             {
                 Close();
+            }
+        }
+
+        private void cinemaLayoutContainer_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(cinemaLayoutContainer, e.OriginalSource as DependencyObject) as ListBoxItem;
+            if (item != null)
+            {
+                MessageBox.Show((string)item.DataContext);
             }
         }
     }
