@@ -25,10 +25,10 @@ namespace Apollo.Core.Test
             Show show = new Show(new DateTime(2020, 11, 26, 12, 33, 48), movie, cinemaHall);
             Reservation reservation = new Reservation(300, 5, show);
             ICollection<Reservation> reservations = (ICollection<Reservation>)await reservationDao.FindAllAsync();
-            Assert.Equal(40, reservations.Count);
+            Assert.Equal(43, reservations.Count);
             long reservationId = await reservationDao.InsertAsync(reservation);
             reservations = (ICollection<Reservation>)await reservationDao.FindAllAsync();
-            Assert.Equal(41, reservations.Count);
+            Assert.Equal(44, reservations.Count);
             Assert.NotEqual(300, reservationId);
             await reservationDao.DeleteAsync(reservation);
         }
@@ -37,7 +37,7 @@ namespace Apollo.Core.Test
         public async void FindAllAsyncTest()
         {
             ICollection<Reservation> reservations = (ICollection<Reservation>)await reservationDao.FindAllAsync();
-            Assert.Equal(40, reservations.Count);
+            Assert.Equal(43, reservations.Count);
         }
 
         [Fact]

@@ -13,12 +13,15 @@ namespace Apollo.Core.Services
         public async Task<long> CreateReservation(Show show, int maxSeats, int seatNumber, int rowNumber)
         {
             Reservation reservation = new Reservation(0, maxSeats, show);
-            await DaoProvider.ReservedSeatDao.InsertAsync(reservation, seatNumber, rowNumber);
-            return await DaoProvider.ReservationDao.InsertAsync(reservation);
+            
+            long reservationId = await DaoProvider.ReservationDao.InsertAsync(reservation);
+            await DaoProvider.ReservedSeatDao.InsertAsync(await GetReservationById(reservationId), seatNumber, rowNumber);
+            return reservationId;
         }
 
-        public async Task<bool> DeleteReservation(long id)
+        public async Task<bool> DeleteReservation(long id, int seatNumber, int rowNumber)
         {
+            await DaoProvider.ReservedSeatDao.DeleteAsync(await GetReservationById(id), seatNumber, rowNumber);
             return await DaoProvider.ReservationDao.DeleteAsync(await GetReservationById(id));
         }
 
