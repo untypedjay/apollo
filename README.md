@@ -4,18 +4,23 @@ An all-in-one software solution for cinemas.
 ## Architecture
 ### Solution Structure
 **`Apollo.Core.Interface`**
+
 All important interfaces provided by `Apollo.Core` that are used by other system components.
 
 **`Apollo.Core.Test`**
+
 The testing project for `Apollo.Core`. It tests all the important components of `Apollo.Core` such as the data access objects and the service classes.
 
 **`Apollo.Core`**
+
 The main component of the backend of Apollo containing the business logic of the applications. Its functionality is provided to the other components by the interfaces defined in `Apollo.Core.Interface`.
 
 **`Apollo.Domain`**
+
 This projekt contains the domain entities of the backend. They are similar to the database tables and are often used as data transfer objects. These are the fundamntal data types of `Apollo.Terminal` and `Apollo.Api`.
 
 **`Apollo.Terminal`**
+
 A desktop application developed using the Windows Presentation Foundation. Its purpose is to buy ticket on-site in the cinema in an intuitive, fast and automated way.
 
 ### Domain Model
