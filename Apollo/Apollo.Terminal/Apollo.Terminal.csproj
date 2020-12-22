@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="IronPdf" Version="2020.12.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Apollo.Core.Interface\Apollo.Core.Interface.csproj" />
     <ProjectReference Include="..\Apollo.Core\Apollo.Core.csproj" />
     <ProjectReference Include="..\Apollo.Domain\Apollo.Domain.csproj" />

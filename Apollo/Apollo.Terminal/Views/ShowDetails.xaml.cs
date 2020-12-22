@@ -47,7 +47,8 @@ namespace Apollo.Terminal.Views
             var item = ItemsControl.ContainerFromElement(cinemaLayoutContainer, e.OriginalSource as DependencyObject) as ListBoxItem;
             if (item != null)
             {
-                MessageBox.Show((string)item.DataContext);
+                PaymentDialog paymentDialog = new PaymentDialog((Seat)item.DataContext);
+                paymentDialog.ShowDialog();
             }
         }
     }

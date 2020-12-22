@@ -47,7 +47,6 @@ namespace Apollo.Terminal
             }
         }
 
-
         private void showContainer_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var item = ItemsControl.ContainerFromElement(showContainer, e.OriginalSource as DependencyObject) as ListBoxItem;
