@@ -1,4 +1,4 @@
-﻿# Apollo
+# Apollo
 An all-in-one software solution for cinemas.
 
 ## Architecture
@@ -45,3 +45,23 @@ These interfaces use the domain classes that are implemented based on the domain
 The interfaces are implemented by abstract classes in ADO.NET, which is an access technology to a memory system.
 The abstract classes are finally overwritten by database specific classes. Apollo uses the Microsoft SQL Server Database Management System. The database for testing is an in-memory LocalDB which is also part of Microsoft SQL Server.
 The database connection is created by factory classes using the factory pattern. Before the Business Logic can use the DAO interfaces, it needs to generate a data connection first using the factory classes.
+
+## User Manual
+### `Apollo.Terminal`
+The terminal applications starts with a screen saver which shows the latest shows playing in the Apollo cinemas. In order to start ordering a ticket, the user needs to click anywhere.
+![Apollo Terminal title screen](terminal/title_screen.PNG)
+
+After leaving the screen saver mode, shows that are playing today are displayed on the screen. Therefore, the user has a good overview what the upcoming shows are. Each show displays the movie image, the movie title and the time ob beginning.
+![Shows playing today](terminal/show_overview.PNG)
+
+If the user does not want to book a ticket for this exact date, he has the opportunity to search for a specific movie title or a specific genre in the search bar at the top. After clicking on the search button, shows that fit the search well be displayed underneath.
+![Searching shows](terminal/show_search.PNG)
+
+When clicking on a show, more detailed information about the show will be displayed, such as the cinema hall, cast, length and the seat layout. By clicking on a seat, it will be selected for the ticket registration.
+![Show details](terminal/show_details.PNG)
+
+Each seat is in a specific price category. When clicking the approval button, a window will open that prompts the user to enter his credit card information.
+![Payment screen](terminal/payment.PNG)
+
+If the payment was successful, the ticket will be generated.
+![Success](terminal/success.PNG)
