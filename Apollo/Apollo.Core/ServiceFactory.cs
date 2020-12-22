@@ -31,5 +31,10 @@ namespace Apollo.Core
         {
             return new ReservationService(daoProvider);
         }
+
+        public static SeatService GetSeatService()
+        {
+            return new SeatService(daoProvider);
+        }
     }
 }
