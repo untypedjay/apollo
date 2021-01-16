@@ -1,3 +1,4 @@
+using Apollo.Core;
 using Apollo.Core.Interface.Services;
 using Apollo.Core.Services;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +27,7 @@ namespace Apollo.Api
             })
                 .AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
-            services.AddScoped<IShowService, ShowService>();
+            services.AddScoped<IShowService>(provider => ServiceFactory.GetShowService());
             // TODO: add other services here
 
             services.AddOpenApiDocument();
