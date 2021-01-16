@@ -12,6 +12,11 @@ namespace Apollo.Core.Services
         {
         }
 
+        public async Task Delete(Show show)
+        {
+            await DaoProvider.ShowDao.DeleteAsync(show);
+        }
+
         public async Task<IEnumerable<Show>> GetAllShows()
         {
             return await DaoProvider.ShowDao.FindAllAsync();
