@@ -38,5 +38,23 @@ namespace Apollo.Core.Services
         {
             return await DaoProvider.ShowDao.FindByExactDateAsync(DateTime.Now);
         }
+
+        public async Task<bool> ShowExists(Show show)
+        {
+            if (await DaoProvider.MovieDao.FindByTitleAsync(show.Movie.Title) == null ||
+                await DaoProvider.CinemaHallDao.FindByNameAsync(show.CinemaHall.Name) == null ||
+                await DaoProvider.ShowDao.FindByExactDateAsync(show.StartsAt) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task Update(Show show)
+        {
+            await DaoProvider.ShowDao.DeleteAsync(show);
+            await DaoProvider.ShowDao.InsertAsync(show);
+        }
     }
 }
