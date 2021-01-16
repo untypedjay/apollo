@@ -39,6 +39,11 @@ namespace Apollo.Core.Services
             return await DaoProvider.ShowDao.FindByExactDateAsync(DateTime.Now);
         }
 
+        public async Task Insert(Show show)
+        {
+            await DaoProvider.ShowDao.InsertAsync(show);
+        }
+
         public async Task<bool> ShowExists(Show show)
         {
             if (await DaoProvider.MovieDao.FindByTitleAsync(show.Movie.Title) == null ||
@@ -49,12 +54,6 @@ namespace Apollo.Core.Services
             }
 
             return true;
-        }
-
-        public async Task Update(Show show)
-        {
-            await DaoProvider.ShowDao.DeleteAsync(show);
-            await DaoProvider.ShowDao.InsertAsync(show);
         }
     }
 }

@@ -29,34 +29,23 @@ namespace Apollo.Api.Controllers
             return new JsonResult("34");
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Show data)
-        {
-            if (!await Logic.ShowExists(data))
-            {
-                return NotFound();
-            }
-
-            await Logic.Update(data);
-            return NoContent();
-        }
-
+        
         [HttpPost]
         public async Task<ActionResult> Insert([FromBody] Show data)
         {
-            if (await Logic.CurrencyExistsAsync(data.Symbol))
+            if (await Logic.ShowExists(data))
             {
                 return Conflict();
             }
 
-            await Logic.InsertAsnyc(data);
-            return CreatedAtAction(nameof(GetBySymbol), new { symbol = data.Symbol }, null);
+            await Logic.Insert(data);
+            return CreatedAtAction("GetShow", new { startsAt = data.StartsAt, movie = data.Movie, cinemaHall = data.CinemaHall }, data);
         }
-
+        /*
         [HttpDelete]
         public async Task<ActionResult> Delete([FromBody] Show data)
         {
 
-        }
+        }*/
     }
 }
