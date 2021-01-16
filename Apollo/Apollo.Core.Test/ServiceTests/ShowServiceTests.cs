@@ -10,6 +10,13 @@ namespace Apollo.Core.Test.ServiceTests
         ShowService showService = ServiceFactory.GetShowService();
 
         [Fact]
+        public async void GetAllShowsTest()
+        {
+            var shows = (ICollection<Show>)await showService.GetAllShows();
+            Assert.Equal(301, shows.Count);
+        }
+
+        [Fact]
         public async void GetShowsByGenreSearchTest()
         {
             var shows = (ICollection<Show>)await showService.GetShowsByGenreSearch("Comedy|Romance");
