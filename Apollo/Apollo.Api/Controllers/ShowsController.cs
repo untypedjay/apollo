@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Apollo.Api.Controllers
 {
-    public class ShowsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ShowsController : ControllerBase
     {
         public ShowsController(IShowService logic)
         {

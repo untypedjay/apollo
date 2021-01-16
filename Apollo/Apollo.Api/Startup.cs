@@ -27,7 +27,7 @@ namespace Apollo.Api
             })
                 .AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
-            services.AddScoped<IShowService>(provider => ServiceFactory.GetShowService());
+            services.AddScoped<IShowService>(provider => ApiServiceFactory.GetShowService());
             // TODO: add other services here
 
             services.AddOpenApiDocument();
