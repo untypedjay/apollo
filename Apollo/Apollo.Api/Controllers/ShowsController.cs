@@ -18,7 +18,7 @@ namespace Apollo.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<Show>> GetAll()
         {
-            return await Logic.GetShowsToday();
+            return await Logic.GetAllShows();
         }
     }
 }
