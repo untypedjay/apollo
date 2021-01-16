@@ -23,10 +23,10 @@ namespace Apollo.Api.Controllers
             return await Logic.GetAllShows();
         }
 
-        [HttpGet]
+        [HttpGet("{date}/{hall}/{movie}")]
         public async Task<IActionResult> GetCapacity(string date, string hall, string movie)
         {
-            return new JsonResult("34");
+            return new JsonResult($"{date}, {hall}, {movie}");
         }
 
         
@@ -41,11 +41,17 @@ namespace Apollo.Api.Controllers
             await Logic.Insert(data);
             return CreatedAtAction("GetShow", new { startsAt = data.StartsAt, movie = data.Movie, cinemaHall = data.CinemaHall }, data);
         }
-        /*
+        
         [HttpDelete]
         public async Task<ActionResult> Delete([FromBody] Show data)
         {
+            if (await Logic.ShowExists(data))
+            {
+                return NotFound();
+            }
 
-        }*/
+            await Logic.Delete(data);
+            return NoContent();
+        }
     }
 }
