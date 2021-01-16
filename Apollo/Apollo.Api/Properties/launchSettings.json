@@ -20,7 +20,7 @@
     "Apollo.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/movies",
+      "launchUrl": "api/shows",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
