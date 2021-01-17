@@ -1,15 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './components/pages/Home';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <App/>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.querySelector('#root')
 );
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+      </Switch>
+    </BrowserRouter>
+  );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
