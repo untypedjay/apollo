@@ -2,7 +2,7 @@ import React from 'react';
 import ShowCard from '../molecules/ShowCard';
 
 interface Props {
-  title: string,
+  title?: string,
   shows: any[]
 };
 

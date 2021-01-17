@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../organisms/Navbar';
 import { fetchShows } from '../../services/showService';
+import ShowContainer from '../templates/ShowContainer';
 
 function Shows() {
   const [shows, setShows] = useState([]);
@@ -20,9 +21,7 @@ function Shows() {
   return (
     <div className="shows">
       <Navbar/>
-      <main className="sh">
-
-      </main>
+      <ShowContainer shows={shows}/>
     </div>
   );
 }

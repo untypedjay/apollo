@@ -3,6 +3,8 @@
     justify-content: space-between;
     padding: 1em;
     background-color: var(--clr-secondary);
+    position: fixed;
+    width: 100%;
 }
 
 .navbar__logo {
