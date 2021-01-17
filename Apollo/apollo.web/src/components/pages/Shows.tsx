@@ -20,6 +20,9 @@ function Shows() {
   return (
     <div className="shows">
       <Navbar/>
+      <main className="sh">
+
+      </main>
     </div>
   );
 }
