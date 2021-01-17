@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/pages/Home';
+import Shows from './components/pages/Shows';
+import Today from './components/pages/Today';
+import Search from './components/pages/Search';
+import Login from './components/pages/Login';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
@@ -17,6 +21,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home}/>
+        <Route exact path="/shows" component={Shows}/>
+        <Route exact path="/today" component={Today}/>
+        <Route exact path="/search" component={Search}/>
+        <Route exact path="/login" component={Login}/>
       </Switch>
     </BrowserRouter>
   );
