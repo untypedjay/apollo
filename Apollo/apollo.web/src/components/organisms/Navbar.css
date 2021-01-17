@@ -5,6 +5,7 @@
     background-color: var(--clr-secondary);
     position: fixed;
     width: 100%;
+    top: 0;
 }
 
 .navbar__logo {

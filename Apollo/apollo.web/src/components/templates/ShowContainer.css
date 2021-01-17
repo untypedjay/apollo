@@ -1,3 +1,7 @@
 .show-container {
     background-color: var(--clr-primary);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    padding: 7em 1em 0 1em;
 }

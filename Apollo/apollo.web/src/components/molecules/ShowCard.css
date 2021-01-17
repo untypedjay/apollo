@@ -1,0 +1,18 @@
+.show-card {
+    background-color: var(--clr-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--clr-text);
+    border: 0;
+    border-radius: var(--rds-card);
+    padding: 0;
+}
+
+.show-card__image {
+    width: 100%;
+    max-height: 100px;
+    object-fit: cover;
+    border-top-left-radius: var(--rds-card);
+    border-top-right-radius: var(--rds-card);
+}

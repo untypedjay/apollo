@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowCard from '../molecules/ShowCard';
+import './ShowContainer.css';
 
 interface Props {
   title?: string,
