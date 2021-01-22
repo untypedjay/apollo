@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    background-color: var(--clr-secondary);
+    background-color: var(--clr-primary);
     position: fixed;
     width: 100%;
     top: 0;

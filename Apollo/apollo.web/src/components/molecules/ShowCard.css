@@ -1,5 +1,5 @@
 .show-card {
-    background-color: var(--clr-secondary);
+    background-color: var(--clr-primary);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
