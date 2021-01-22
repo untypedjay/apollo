@@ -1,6 +1,8 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../atoms/Button';
 import './Login.css';
+
 
 function Login() {
   const [emailValue, setEmailValue] = useState('');
@@ -28,7 +30,7 @@ function Login() {
         <input type="email" value={emailValue} onChange={handleInputChange} name="email"/>
         <input type="password" value={passwordValue} onChange={handleInputChange} name="password"/>
         <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
-        <button onClick={login}>Login</button>
+        <Button onClick={login}>Login</Button>
         <Link to={''}>Forgot password?</Link>
       </div>
     </div>

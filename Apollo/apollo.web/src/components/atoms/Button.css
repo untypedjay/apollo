@@ -1,0 +1,28 @@
+.button {
+    padding: 10px 16px;
+    line-height: 20px;
+    border-radius: var(--rds-button);
+    border: none;
+    min-width: 125px;
+    font-size: 1.4rem;
+    background-color: transparent;
+}
+
+.button:hover:enabled {
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.button:disabled,
+.button[disabled] {
+    background-color: var(--clr-disabled);
+}
+
+.button--primary {
+    background-color: var(--clr-accent);
+    color: var(--clr-text);
+}
+
+.button--primary:hover:enabled {
+    background-color: var(--clr-accent-hover);
+}

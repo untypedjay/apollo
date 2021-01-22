@@ -2,9 +2,11 @@
   --clr-primary: #1D212A;
   --clr-secondary: #141414;
   --clr-accent: #96031A;
+  --clr-accent-hover: #780214;
   --clr-text: #FFFFFF;
-  --rds-card: 20px;
-  --rds-button: 5px;
+  --clr-disabled: #9B9B9B;
+  --rds-card: 8px;
+  --rds-button: 4px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
