@@ -1,12 +1,12 @@
-import React, {FormEvent, useState} from 'react';
+import React, { DetailedHTMLProps, InputHTMLAttributes, useState, FormEvent } from 'react';
 import './Input.css';
 
-interface Props {
+interface Props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
   type: string,
   children: string
 }
 
-function Input({ type, children }: Props) {
+function Input({ type = 'text', children }: Props) {
   const [value, setValue] = useState('');
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
