@@ -1,0 +1,17 @@
+.login {
+    background-color: var(--clr-secondary);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__form {
+    background-color: var(--clr-primary);
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    min-width: 300px;
+    padding: 1em;
+    border-radius: var(--rds-card);
+}
