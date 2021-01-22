@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../atoms/Button';
 import './Login.css';
+import Input from '../atoms/Input';
 
 
 function Login() {
@@ -27,8 +28,8 @@ function Login() {
   return (
     <div className="login">
       <div className="login__form">
-        <input type="email" value={emailValue} onChange={handleInputChange} name="email"/>
-        <input type="password" value={passwordValue} onChange={handleInputChange} name="password"/>
+        <Input type="email">Email</Input>
+        <Input type="password">Password</Input>
         <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
         <Button onClick={login}>Login</Button>
         <Link to={''}>Forgot password?</Link>

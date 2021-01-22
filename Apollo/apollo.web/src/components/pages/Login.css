@@ -10,8 +10,10 @@
     background-color: var(--clr-primary);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 400px;
     min-width: 350px;
+    height: 400px;
     padding: 1em;
     border-radius: var(--rds-card);
 }

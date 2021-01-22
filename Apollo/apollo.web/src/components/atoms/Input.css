@@ -1,0 +1,54 @@
+.input {
+    position: relative;
+    height: 56px;
+    border-radius: var(--rds-button);
+    border: 2px solid var(--clr-text);
+    background: var(--clr-primary);
+}
+
+.input:focus-within {
+    border: 2px solid var(--clr-accent);
+}
+
+.input__input {
+    position: relative;
+    width: 180px;
+    height: 56px;
+    background: transparent;
+    border: 0;
+    font-weight: 700;
+    text-indent: 0.75rem;
+    color: var(--clr-text);
+    width: 100%;
+    padding: 0;
+    outline: none;
+}
+
+.input__input::placeholder {
+    color: transparent;
+}
+
+.input__input:focus + .input__placeholder {
+    background: var(--clr-primary);
+    transform: translate(0.625rem, -10px) scale(0.8);
+    color: var(--clr-accent);
+}
+
+.input__input:not(:placeholder-shown) + .input__placeholder {
+    background: var(--clr-primary);
+    transform: translate(0.625rem, -10px) scale(0.8);
+}
+
+.input__placeholder {
+    color: var(--clr-text);
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    padding: 0 0.25rem;
+    transform: translate(0.5rem, 15px);
+    transform-origin: 0% 0%;
+    background: transparent;
+    pointer-events: none;
+    transition: transform 0.35s, background 0.35s;
+}
