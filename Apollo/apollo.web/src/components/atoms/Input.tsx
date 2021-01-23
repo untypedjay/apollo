@@ -2,7 +2,7 @@ import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import './Input.css';
 
 interface Props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{
-  type: string,
+  type?: string,
   children: string
 }
 

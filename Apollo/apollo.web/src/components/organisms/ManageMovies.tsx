@@ -3,6 +3,7 @@ import { Movie, fetchMovies } from '../../services/movieService';
 import List from './List';
 import Button from '../atoms/Button';
 import './ManageMovies.css';
+import MovieModal from './MovieModal';
 
 function ManageMovies() {
   const [movies, setMovies] = useState([]);
@@ -37,6 +38,7 @@ function ManageMovies() {
 
   return (
     <div className="manage-movies">
+      { isModalOpen && <MovieModal closeModal={() => setIsModalOpen(false)}/> }
       <Button onClick={() => setIsModalOpen(true)}>New Movie</Button>
       <List title="Movies" data={movies} property="title" editAction={editMovie} deleteAction={removeMovie}/>
     </div>
