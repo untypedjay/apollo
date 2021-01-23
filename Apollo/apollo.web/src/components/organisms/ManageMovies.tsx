@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Movie, fetchMovies } from '../../services/movieService';
+import {Movie, fetchMovies, deleteMovie} from '../../services/movieService';
 import List from './List';
 import Button from '../atoms/Button';
 import './ManageMovies.css';
 import MovieModal from './MovieModal';
 
 function ManageMovies() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [isLoading]);
 
   const getMovies = async () => {
     const response = await fetchMovies();
@@ -25,15 +25,26 @@ function ManageMovies() {
     }
   };
 
-  const editMovie = (movie: Movie) => {
+  const editMovie = (movieTitle: string): void => {
     alert('Edit Movie');
   };
 
-  const removeMovie = (movie: Movie) => {
-    const toDelete = window.confirm(`Do you really want to delete "${movie.title}"?`);
-    if (toDelete) {
-      alert('Delete Movie');
+  const removeMovie = async (movieTitle: string) => {
+    const toDelete = window.confirm(`Do you really want to delete "${movieTitle}"?`);
+    const movie = getMovieByTitle(movieTitle);
+    if (toDelete && movie) {
+      const response = await deleteMovie(movie);
+      if (response.status === 204) {
+        setIsLoading(true);
+      } else {
+        alert(`ERROR: Could not delete movie (${response.status})`);
+        console.log(response);
+      }
     }
+  };
+
+  const getMovieByTitle = (movieTitle: string) => {
+    return movies.find(movie => movie.title === movieTitle);
   };
 
   return (
