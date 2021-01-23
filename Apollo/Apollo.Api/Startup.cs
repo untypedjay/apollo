@@ -30,6 +30,7 @@ namespace Apollo.Api
                 .AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
             services.AddScoped<IShowService>(provider => ApiServiceFactory.GetShowService());
+            services.AddScoped<IMovieService>(provider => ApiServiceFactory.GetMovieService());
             // TODO: add other services here
 
             services.AddOpenApiDocument();

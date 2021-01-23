@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 
 namespace Apollo.Core.Interface.Services
 {
-    interface IMovieService
+    public interface IMovieService
     {
         Task<IEnumerable<Movie>> GetAllMovies();
+        Task<bool> MovieExists(Movie movie);
+        Task Insert(Movie movie);
+        Task Delete(Movie movie);
     }
 }

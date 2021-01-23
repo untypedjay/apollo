@@ -31,5 +31,10 @@ namespace Apollo.Core
         {
             return new SeatService(daoProvider);
         }
+
+        public static MovieService GetMovieService()
+        {
+            return new MovieService(daoProvider);
+        }
     }
 }

@@ -45,7 +45,7 @@ namespace Apollo.Api.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete([FromBody] Show data)
         {
-            if (await Logic.ShowExists(data))
+            if (!await Logic.ShowExists(data))
             {
                 return NotFound();
             }
