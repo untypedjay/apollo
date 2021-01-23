@@ -8,6 +8,7 @@ import Search from './components/pages/Search';
 import Login from './components/pages/Login';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import AdminArea from './components/pages/AdminArea';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +26,10 @@ function App() {
         <Route exact path="/today" component={Today}/>
         <Route exact path="/search" component={Search}/>
         <Route exact path="/login" component={Login}/>
+        <Route exact path="/admin/halls" component={AdminArea}/>
+        <Route exact path="/admin/films" component={AdminArea}/>
+        <Route exact path="/admin/shows" component={AdminArea}/>
+        <Route exact path="/admin/" component={AdminArea}/>
       </Switch>
     </BrowserRouter>
   );

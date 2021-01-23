@@ -6,16 +6,10 @@ interface Props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>,
   children: string
 }
 
-function Input({ type = 'text', children }: Props) {
-  const [value, setValue] = useState('');
-
-  const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
-    setValue((event.target as any).value);
-  };
-
+function Input({ type = 'text', value, name, onChange, children }: Props) {
   return (
     <div className="input">
-      <input className="input__input" type={type} value={value} onChange={handleInputChange} placeholder={children}/>
+      <input className="input__input" type={type} value={value} name={name} onChange={onChange} placeholder={children}/>
       <div className="input__placeholder">
         { children }
       </div>

@@ -35,8 +35,8 @@ function Login() {
         <Link to="/"><img className="login__branding" src={ApolloLogo} alt="Apollo Logo"/></Link>
         <h3 className="login__heading">Login</h3>
         <div className="login__form">
-          <Input type="email">Email</Input>
-          <Input type="password">Password</Input>
+          <Input type="email" value={emailValue} name="email" onChange={handleInputChange}>Email</Input>
+          <Input type="password" value={passwordValue} name="password" onChange={handleInputChange}>Password</Input>
           <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
           <Button onClick={login}>Login</Button>
           <Link to={''}>Forgot password?</Link>
