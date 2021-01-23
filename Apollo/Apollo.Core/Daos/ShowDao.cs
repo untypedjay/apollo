@@ -69,6 +69,14 @@ namespace Apollo.Core.Daos
                 new QueryParameter("@de", new DateTime(date.Year, date.Month, date.Day, 23, 59, 59)));
         }
 
+        public virtual async Task<Show> FindByExactTimeStampAsync(DateTime date)
+        {
+            return await template.QuerySingleAsync<Show>(
+                "SELECT * FROM Show WHERE StartsAt=@sa",
+                MapRowToShow,
+                new QueryParameter("@sa", new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second)));
+        }
+
         public virtual async Task<IEnumerable<Show>> FindByMovieAsync(Movie movie)
         {
             return await template.QueryAsync<Show>(

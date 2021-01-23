@@ -12,6 +12,7 @@ namespace Apollo.Core.Interface.Daos
         Task<Show> FindByDateCinemaHallAndMovieAsync(DateTime date, CinemaHall cinemaHall, Movie movie);
         Task<IEnumerable<Show>> FindByDateAsync(DateTime date);
         Task<IEnumerable<Show>> FindByExactDateAsync(DateTime date);
+        Task<Show> FindByExactTimeStampAsync(DateTime date);
         Task<IEnumerable<Show>> FindByCinemaHallAsync(CinemaHall cinemaHall);
         Task<IEnumerable<Show>> FindByMovieAsync(Movie movie);
         Task<bool> DeleteAsync(Show show);

@@ -53,7 +53,7 @@ namespace Apollo.Core.Services
         {
             if (await DaoProvider.MovieDao.FindByTitleAsync(show.Movie.Title) == null ||
                 await DaoProvider.CinemaHallDao.FindByNameAsync(show.CinemaHall.Name) == null ||
-                await DaoProvider.ShowDao.FindByExactDateAsync(show.StartsAt) == null)
+                await DaoProvider.ShowDao.FindByExactTimeStampAsync(show.StartsAt) == null)
             {
                 return false;
             }

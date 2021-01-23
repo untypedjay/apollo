@@ -1,5 +1,6 @@
 ﻿using Apollo.Core.Interface.Services;
 using Apollo.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -39,7 +40,8 @@ namespace Apollo.Api.Controllers
             }
 
             await Logic.Insert(data);
-            return CreatedAtAction("GetShow", new { startsAt = data.StartsAt, movie = data.Movie, cinemaHall = data.CinemaHall }, data);
+            Show createdShow = new Show(data.StartsAt, data.Movie, data.CinemaHall);
+            return new ObjectResult(createdShow) { StatusCode = StatusCodes.Status201Created };
         }
         
         [HttpDelete]
