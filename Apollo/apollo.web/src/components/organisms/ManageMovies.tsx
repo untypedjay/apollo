@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { fetchMovies } from '../../services/movieService';
+import { Movie, fetchMovies } from '../../services/movieService';
+import List from './List';
 
 function ManageMovies() {
   const [movies, setMovies] = useState([]);
@@ -11,14 +12,29 @@ function ManageMovies() {
 
   const getMovies = async () => {
     const response = await fetchMovies();
-    console.log(response);
     setMovies(await response.json());
-    //setIsLoading(false);
-  }
+    if (response.status === 200) {
+      setIsLoading(false);
+    } else {
+      alert(`ERROR: Could not load movies (${response.status})`);
+      console.log(response);
+    }
+  };
+
+  const editMovie = (movie: Movie) => {
+    alert('Edit Movie');
+  };
+
+  const removeMovie = (movie: Movie) => {
+    const toDelete = window.confirm(`Do you really want to delete "${movie.title}"?`);
+    if (toDelete) {
+      alert('Delete Movie');
+    }
+  };
 
   return (
     <div className="manage-movies">
-      Movies
+      <List title="Movies" data={movies} property="title" editAction={editMovie} deleteAction={removeMovie}/>
     </div>
   );
 }

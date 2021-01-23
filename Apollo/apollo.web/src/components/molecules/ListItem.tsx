@@ -1,6 +1,7 @@
 import React from 'react';
-import './ListItem.css';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import Button from '../atoms/Button';
+import './ListItem.css';
 
 interface Props {
   editAction: (item: any) => void;
@@ -12,8 +13,8 @@ function ListItem({ editAction, deleteAction, children }: Props) {
   return (
     <div className="list-item">
       <p className="list-item__text">{ children }</p>
-      <Button onClick={() => editAction(children)} buttonType="transparent"></Button>
-      <Button onClick={() => deleteAction(children)} buttonType="transparent"></Button>
+      <Button onClick={() => editAction(children)} buttonType="transparent"><FaEdit/></Button>
+      <Button onClick={() => deleteAction(children)} buttonType="transparent"><FaTrashAlt/></Button>
     </div>
   );
 }

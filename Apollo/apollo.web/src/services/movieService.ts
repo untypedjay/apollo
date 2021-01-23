@@ -1,6 +1,6 @@
 const BASE_ENDPOINT = 'http://localhost:5000/api/movies';
 
-interface Movie {
+export interface Movie {
   title: string;
   description: string;
   genre: string;
