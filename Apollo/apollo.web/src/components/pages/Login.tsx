@@ -1,9 +1,9 @@
 import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../atoms/Button';
-import './Login.css';
 import Input from '../atoms/Input';
-
+import Button from '../atoms/Button';
+import ApolloLogo from '../../images/apollo-logo.png';
+import './Login.css';
 
 function Login() {
   const [emailValue, setEmailValue] = useState('');
@@ -22,12 +22,17 @@ function Login() {
   };
 
   const login = () => {
+    if (emailValue === 'admin' && passwordValue === 'admin') {
 
+    } else {
+      alert('Email or password incorrect!');
+    }
   };
 
   return (
     <div className="login">
-      <div>
+      <div className="login__container">
+        <Link to="/"><img className="login__branding" src={ApolloLogo} alt="Apollo Logo"/></Link>
         <h3 className="login__heading">Login</h3>
         <div className="login__form">
           <Input type="email">Email</Input>
