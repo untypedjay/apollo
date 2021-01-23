@@ -2,12 +2,14 @@ import React, { FormEvent, useState } from 'react';
 import { Movie } from '../../services/movieService';
 import Modal from '../templates/Modal';
 import Input from '../atoms/Input';
+import './MovieModal.css';
 
 interface Props {
+  title: string;
   closeModal: () => void;
 }
 
-function MovieModal({ closeModal }: Props) {
+function MovieModal({ title, closeModal }: Props) {
   const [movie, setMovie] = useState<Movie>({} as Movie);
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
@@ -24,8 +26,8 @@ function MovieModal({ closeModal }: Props) {
   };
 
   return (
-    <Modal closeAction={closeModal} secondaryAction={closeModal} primaryAction={saveMovie}>
-      <>
+    <Modal title={title} closeAction={closeModal} secondaryAction={closeModal} primaryAction={saveMovie}>
+      <div className="movie-modal__container">
         <Input value={movie.title} name="title" onChange={handleInputChange}>Title</Input>
         <Input value={movie.description} name="description" onChange={handleInputChange}>Description</Input>
         <Input value={movie.genre} name="genre" onChange={handleInputChange}>Genres</Input>
@@ -33,7 +35,7 @@ function MovieModal({ closeModal }: Props) {
         <Input value={movie.actors} name="actors" onChange={handleInputChange}>Actors</Input>
         <Input value={movie.imageURL} name="imageURL" onChange={handleInputChange}>Wallpaper URL</Input>
         <Input value={movie.trailerURL} name="trailerURL" onChange={handleInputChange}>Trailer URL</Input>
-      </>
+      </div>
     </Modal>
   );
 }
