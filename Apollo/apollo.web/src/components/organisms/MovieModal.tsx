@@ -27,11 +27,13 @@ function MovieModal({ title, closeModal }: Props) {
 
   return (
     <Modal title={title} closeAction={closeModal} secondaryAction={closeModal} primaryAction={saveMovie}>
-      <div className="movie-modal__container">
+      <div className="movie-modal__container movie-modal__container--vertical">
         <Input value={movie.title} name="title" onChange={handleInputChange}>Title</Input>
         <Input value={movie.description} name="description" onChange={handleInputChange}>Description</Input>
-        <Input value={movie.genre} name="genre" onChange={handleInputChange}>Genres</Input>
-        <Input type="number" value={movie.length} name="length" onChange={handleInputChange}>Length</Input>
+        <div className="movie-modal__container movie-modal__container--horizontal">
+          <Input value={movie.genre} name="genre" onChange={handleInputChange}>Genres</Input>
+          <Input type="number" value={movie.length} name="length" onChange={handleInputChange}>Length</Input>
+        </div>
         <Input value={movie.actors} name="actors" onChange={handleInputChange}>Actors</Input>
         <Input value={movie.imageURL} name="imageURL" onChange={handleInputChange}>Wallpaper URL</Input>
         <Input value={movie.trailerURL} name="trailerURL" onChange={handleInputChange}>Trailer URL</Input>

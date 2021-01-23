@@ -2,12 +2,13 @@
     position: relative;
     height: 56px;
     border-radius: var(--rds-button);
-    border: 2px solid var(--clr-text);
+    border: 2px solid var(--clr-disabled);
     background: var(--clr-primary);
+    width: 100%;
 }
 
 .input:focus-within {
-    border: 2px solid var(--clr-accent);
+    border: 2px solid var(--clr-text);
 }
 
 .input__input {
@@ -31,7 +32,7 @@
 .input__input:focus + .input__placeholder {
     background: var(--clr-primary);
     transform: translate(0.625rem, -10px) scale(0.8);
-    color: var(--clr-accent);
+    color: var(--clr-text);
 }
 
 .input__input:not(:placeholder-shown) + .input__placeholder {
@@ -40,7 +41,7 @@
 }
 
 .input__placeholder {
-    color: var(--clr-text);
+    color: var(--clr-disabled);
     position: absolute;
     z-index: 0;
     top: 0;
