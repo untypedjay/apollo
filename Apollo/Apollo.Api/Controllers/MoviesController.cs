@@ -48,5 +48,18 @@ namespace Apollo.Api.Controllers
             await Logic.Delete(data);
             return NoContent();
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] Movie data)
+        {
+            if (!await Logic.MovieExists(data))
+            {
+                return NotFound();
+            }
+
+            await Logic.Delete(data);
+            await Logic.Insert(data);
+            return NoContent();
+        }
     }
 }

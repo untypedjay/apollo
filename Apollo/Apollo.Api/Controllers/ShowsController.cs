@@ -55,5 +55,18 @@ namespace Apollo.Api.Controllers
             await Logic.Delete(data);
             return NoContent();
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] Show data)
+        {
+            if (!await Logic.ShowExists(data))
+            {
+                return NotFound();
+            }
+
+            await Logic.Delete(data);
+            await Logic.Insert(data);
+            return NoContent();
+        }
     }
 }
