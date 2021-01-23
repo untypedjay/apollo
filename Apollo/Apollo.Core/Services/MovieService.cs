@@ -12,24 +12,29 @@ namespace Apollo.Core.Services
         {
         }
 
-        public Task Delete(Movie movie)
+        public async Task Delete(Movie movie)
         {
-            throw new NotImplementedException();
+            await DaoProvider.MovieDao.DeleteAsync(movie);
         }
 
-        public Task<IEnumerable<Movie>> GetAllMovies()
+        public async Task<IEnumerable<Movie>> GetAllMovies()
         {
-            throw new NotImplementedException();
+            return await DaoProvider.MovieDao.FindAllAsync();
         }
 
-        public Task Insert(Movie movie)
+        public async Task Insert(Movie movie)
         {
-            throw new NotImplementedException();
+            await DaoProvider.MovieDao.InsertAsync(movie);
         }
 
-        public Task<bool> MovieExists(Movie movie)
+        public async Task<bool> MovieExists(Movie movie)
         {
-            throw new NotImplementedException();
+            if (await DaoProvider.MovieDao.FindByTitleAsync(movie.Title) == null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
