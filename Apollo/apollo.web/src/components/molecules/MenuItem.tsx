@@ -16,10 +16,17 @@ function MenuItem({ selected, route, icon }: Props) {
     return 'menu-item';
   };
 
+  const renderDisplayName = () => {
+    if (route.includes('admin/')) {
+      return `${route.charAt(7).toUpperCase()}${route.substring(8, route.length)}`;
+    }
+    return 'Overview';
+  };
+
   return (
     <button className={calculateStyling()} onClick={() => history.push(route)}>
       { icon }
-      <p className="menu-item__text">{ `${route.charAt(1).toUpperCase()}${route.substring(2, route.length)}`}</p>
+      <p className="menu-item__text">{ renderDisplayName() }</p>
     </button>
   );
 }
