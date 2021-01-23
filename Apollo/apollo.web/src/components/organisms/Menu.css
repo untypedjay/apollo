@@ -1,0 +1,25 @@
+.menu {
+    background-color: var(--clr-primary);
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.menu__logo {
+    width: 10em;
+    object-fit: contain;
+    padding: 1em;
+}
+
+.menu__icon {
+    height: 40px;
+    margin-left: 1em;
+}
+
+.menu__network {
+    padding: 1em;
+    width: 100%;
+}
