@@ -1,0 +1,10 @@
+.list__title {
+    color: var(--clr-text);
+}
+
+.list__container {
+    background-color: var(--clr-primary);
+    overflow-y: scroll;
+    max-height: 600px;
+    border-radius: var(--rds-card);
+}

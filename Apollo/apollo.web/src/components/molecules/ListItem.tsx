@@ -12,9 +12,17 @@ interface Props {
 function ListItem({ editAction, deleteAction, children }: Props) {
   return (
     <div className="list-item">
-      <p className="list-item__text">{ children }</p>
-      <Button onClick={() => editAction(children)} buttonType="transparent"><FaEdit/></Button>
-      <Button onClick={() => deleteAction(children)} buttonType="transparent"><FaTrashAlt/></Button>
+      <div className="list-item__text-container">
+        <p className="list-item__text">{ children }</p>
+      </div>
+      <div className="list-item__button-container">
+        <Button onClick={() => editAction(children)} buttonType="transparent">
+          <FaEdit className="list-item__icon--white"/>
+        </Button>
+        <Button onClick={() => deleteAction(children)} buttonType="transparent">
+          <FaTrashAlt className="list-item__icon--red"/>
+        </Button>
+      </div>
     </div>
   );
 }

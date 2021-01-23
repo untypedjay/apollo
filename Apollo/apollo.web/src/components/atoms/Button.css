@@ -3,7 +3,6 @@
     line-height: 20px;
     border-radius: var(--rds-button);
     border: none;
-    min-width: 125px;
     font-size: 1.4rem;
     background-color: transparent;
 }
@@ -21,6 +20,7 @@
 .button--primary {
     background-color: var(--clr-accent);
     color: var(--clr-text);
+    min-width: 125px;
 }
 
 .button--primary:hover:enabled {

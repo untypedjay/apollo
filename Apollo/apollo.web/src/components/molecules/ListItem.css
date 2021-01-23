@@ -1,0 +1,18 @@
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 1px solid var(--clr-disabled);
+}
+
+.list-item__text {
+    color: var(--clr-text);
+}
+
+.list-item__icon--white {
+    fill: var(--clr-text);
+}
+
+.list-item__icon--red {
+    fill: var(--clr-accent);
+}

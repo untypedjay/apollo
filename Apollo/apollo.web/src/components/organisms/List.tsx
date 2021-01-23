@@ -1,6 +1,6 @@
 import React from 'react';
-import './List.css';
 import ListItem from '../molecules/ListItem';
+import './List.css';
 
 interface Props {
   title: string;
@@ -13,7 +13,7 @@ interface Props {
 function List({ title, data, property, editAction, deleteAction }: Props) {
   return (
     <div className="list">
-      <h3>{ title }</h3>
+      <h3 className="list__title">{ title }</h3>
       <div className="list__container">
         { data.map(item => <ListItem key={item[property]} editAction={editAction} deleteAction={deleteAction}>{ item[property] }</ListItem>)}
       </div>
