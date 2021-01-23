@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import ApolloLogo from '../../images/apollo-logo.png';
@@ -9,6 +9,7 @@ function Login() {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [stayLoggedInValue, setStayLoggedInValue] = useState(false);
+  const history = useHistory();
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
@@ -23,7 +24,7 @@ function Login() {
 
   const login = () => {
     if (emailValue === 'admin' && passwordValue === 'admin') {
-
+      history.push('/admin');
     } else {
       alert('Email or password incorrect!');
     }
