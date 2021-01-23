@@ -27,12 +27,15 @@ function Login() {
 
   return (
     <div className="login">
-      <div className="login__form">
-        <Input type="email">Email</Input>
-        <Input type="password">Password</Input>
-        <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
-        <Button onClick={login}>Login</Button>
-        <Link to={''}>Forgot password?</Link>
+      <div>
+        <h3 className="login__heading">Login</h3>
+        <div className="login__form">
+          <Input type="email">Email</Input>
+          <Input type="password">Password</Input>
+          <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
+          <Button onClick={login}>Login</Button>
+          <Link to={''}>Forgot password?</Link>
+        </div>
       </div>
     </div>
   );

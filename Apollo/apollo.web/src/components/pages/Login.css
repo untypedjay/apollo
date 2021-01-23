@@ -6,6 +6,12 @@
     align-items: center;
 }
 
+.login__heading {
+    color: var(--clr-text);
+    font-size: 2rem;
+    text-align: center;
+}
+
 .login__form {
     background-color: var(--clr-primary);
     display: flex;
@@ -14,6 +20,6 @@
     max-width: 400px;
     min-width: 350px;
     height: 400px;
-    padding: 1em;
+    padding: 1.5em;
     border-radius: var(--rds-card);
 }
