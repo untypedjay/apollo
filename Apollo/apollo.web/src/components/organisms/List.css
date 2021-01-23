@@ -4,11 +4,12 @@
 
 .list__title {
     color: var(--clr-text);
+    font-size: 1.8rem;
 }
 
 .list__container {
     background-color: var(--clr-primary);
     overflow-y: scroll;
-    max-height: 600px;
+    max-height: 560px;
     border-radius: var(--rds-card);
 }

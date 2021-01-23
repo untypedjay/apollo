@@ -8,11 +8,11 @@ interface Props {
 }
 
 function MovieModal({ closeModal }: Props) {
-  const [movie, setMovie] = useState<Movie | {}>({});
+  const [movie, setMovie] = useState<Movie>({} as Movie);
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
-    const updatedMovie: Movie | {} = movie;
+    const updatedMovie: Movie = movie;
     // @ts-ignore
     updatedMovie[eventTarget.name] = eventTarget.value;
     setMovie(updatedMovie);

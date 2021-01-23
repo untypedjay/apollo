@@ -1,13 +1,13 @@
 const BASE_ENDPOINT = 'http://localhost:5000/api/movies';
 
-export interface Movie {
-  title: string;
-  description: string;
-  genre: string;
-  length: number;
-  actors: string;
-  imageURL: string;
-  trailerURL: string;
+export type Movie = {
+  title: string,
+  description: string,
+  genre: string,
+  length: number,
+  actors: string,
+  imageURL: string,
+  trailerURL: string
 }
 
 export async function fetchMovies() {

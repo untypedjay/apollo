@@ -10,6 +10,7 @@ interface Props {
 }
 
 function AdminContent({ section }: Props) {
+
   return (
     <main className="admin-content">
       { section === '/admin' && <AdminOverview/> }
