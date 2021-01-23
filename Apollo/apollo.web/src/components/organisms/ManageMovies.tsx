@@ -1,10 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Movie, fetchMovies } from '../../services/movieService';
 import List from './List';
+import Button from '../atoms/Button';
+import './ManageMovies.css';
 
 function ManageMovies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     getMovies();
@@ -34,6 +37,7 @@ function ManageMovies() {
 
   return (
     <div className="manage-movies">
+      <Button onClick={() => setIsModalOpen(true)}>New Movie</Button>
       <List title="Movies" data={movies} property="title" editAction={editMovie} deleteAction={removeMovie}/>
     </div>
   );

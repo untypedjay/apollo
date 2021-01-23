@@ -21,6 +21,7 @@
     background-color: var(--clr-accent);
     color: var(--clr-text);
     min-width: 125px;
+    max-width: 200px;
 }
 
 .button--primary:hover:enabled {
