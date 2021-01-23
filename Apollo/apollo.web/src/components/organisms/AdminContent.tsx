@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminOverview from './AdminOverview';
 import ManageShows from './ManageShows';
-import ManageFilms from './ManageFilms';
+import ManageMovies from './ManageMovies';
 import ManageHalls from './ManageHalls';
 import './AdminContent.css';
 
@@ -14,7 +14,7 @@ function AdminContent({ section }: Props) {
     <main className="admin-content">
       { section === '/admin' && <AdminOverview/> }
       { section === '/admin/shows' && <ManageShows/> }
-      { section === '/admin/films' && <ManageFilms/> }
+      { section === '/admin/movies' && <ManageMovies/> }
       { section === '/admin/halls' && <ManageHalls/> }
     </main>
   );

@@ -27,7 +27,7 @@ function App() {
         <Route exact path="/search" component={Search}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/admin/halls" component={AdminArea}/>
-        <Route exact path="/admin/films" component={AdminArea}/>
+        <Route exact path="/admin/movies" component={AdminArea}/>
         <Route exact path="/admin/shows" component={AdminArea}/>
         <Route exact path="/admin/" component={AdminArea}/>
       </Switch>

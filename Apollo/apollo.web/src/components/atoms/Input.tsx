@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, InputHTMLAttributes, useState, FormEvent } from 'react';
+import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import './Input.css';
 
 interface Props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>{

@@ -10,7 +10,7 @@ interface Props {
 }
 
 function Menu({ selected }: Props) {
-  const iconSize = '30px';
+  const iconSize = '25px';
 
   return (
     <div className="menu">
@@ -29,8 +29,8 @@ function Menu({ selected }: Props) {
       />
 
       <MenuItem
-        selected={selected === '/admin/films'}
-        route="/admin/films"
+        selected={selected === '/admin/movies'}
+        route="/admin/movies"
         icon={<FaFilm className="menu__icon" size={iconSize}/>}
       />
 
