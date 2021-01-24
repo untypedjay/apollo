@@ -22,6 +22,12 @@ namespace Apollo.Core.Services
             return await DaoProvider.ShowDao.FindAllAsync();
         }
 
+        public async Task<int> GetCapacityByShow(Show show)
+        {
+            ICollection<Reservation> reservations = (ICollection<Reservation>)await DaoProvider.ReservationDao.FindByShowAsync(show);
+            return reservations.Count;
+        }
+
         public async Task<IEnumerable<Show>> GetShowsByGenreSearch(string search)
         {
             var movies = await DaoProvider.MovieDao.FindByGenreAsync(search);

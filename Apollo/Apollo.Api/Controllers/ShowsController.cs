@@ -24,10 +24,10 @@ namespace Apollo.Api.Controllers
             return await Logic.GetAllShows();
         }
 
-        [HttpGet("{date}/{hall}/{movie}")]
-        public async Task<IActionResult> GetCapacity(string date, string hall, string movie)
+        [HttpGet("capacity")]
+        public async Task<IActionResult> GetCapacity([FromBody] Show data)
         {
-            return new JsonResult($"{date}, {hall}, {movie}");
+            return Ok(await Logic.GetCapacityByShow(data));
         }
 
         
