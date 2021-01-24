@@ -2,6 +2,7 @@ import React from 'react';
 import ListItem from '../molecules/ListItem';
 import { Show } from '../../services/showService';
 import './List.css';
+import {formatTimeStamp} from '../../helpers/converter';
 
 interface Props {
   shows: Show[];
@@ -19,7 +20,7 @@ function ShowList({ shows, deleteAction }: Props) {
             <ListItem
               key={`${show.movie?.title}${show.cinemaHall?.name}${show.startsAt}`}
               deleteAction={deleteAction}
-              extraInfo={`${show.startsAt} | ${show.cinemaHall?.name}`}
+              extraInfo={`${formatTimeStamp(show.startsAt)} | ${show.cinemaHall?.name}`}
             >
               { show.movie?.title }
             </ListItem>
