@@ -9,25 +9,25 @@ namespace Apollo.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class SeatCategoriesController : ControllerBase
     {
-        public MoviesController(IMovieService logic)
+        public SeatCategoriesController(ISeatCategoryService logic)
         {
             Logic = logic;
         }
 
-        private IMovieService Logic { get; }
+        private ISeatCategoryService Logic { get; }
 
         [HttpGet]
-        public async Task<IEnumerable<Movie>> GetAll()
+        public async Task<IEnumerable<SeatCategory>> GetAll()
         {
-            return await Logic.GetAllMovies();
+            return await Logic.GetAllSeatCategories();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Insert([FromBody] Movie data)
+        public async Task<ActionResult> Insert([FromBody] SeatCategory data)
         {
-            if (await Logic.MovieExists(data))
+            if (await Logic.SeatCategoryExists(data))
             {
                 return Conflict();
             }
@@ -37,9 +37,9 @@ namespace Apollo.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Movie data)
+        public async Task<ActionResult> Update([FromBody] SeatCategory data)
         {
-            if (!await Logic.MovieExists(data))
+            if (!await Logic.SeatCategoryExists(data))
             {
                 return NotFound();
             }
@@ -56,9 +56,9 @@ namespace Apollo.Api.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromBody] Movie data)
+        public async Task<ActionResult> Delete([FromBody] SeatCategory data)
         {
-            if (!await Logic.MovieExists(data))
+            if (!await Logic.SeatCategoryExists(data))
             {
                 return NotFound();
             }
