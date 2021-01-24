@@ -53,3 +53,7 @@
     pointer-events: none;
     transition: transform 0.35s, background 0.35s;
 }
+
+.input__option {
+    color: var(--clr-secondary);
+}

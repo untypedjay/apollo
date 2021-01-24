@@ -3,6 +3,7 @@ import Modal from '../templates/Modal';
 import Input from '../atoms/Input';
 import { insertShow, Show } from '../../services/showService';
 import './ShowModal.css';
+import {getCinemaHallNameArray, getMovieTitleArray} from '../../helpers/converter';
 
 interface Props {
   closeModal: () => void;
@@ -11,6 +12,8 @@ interface Props {
 function ShowModal({ closeModal }: Props) {
   const [show, setShow] = useState({} as Show);
   const title = 'New Show';
+  const movieArray = getMovieTitleArray();
+  const hallArray = getCinemaHallNameArray();
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
@@ -41,12 +44,8 @@ function ShowModal({ closeModal }: Props) {
     >
       <div className="show-modal__container">
         <Input type="datetime-local" name="timeStamp" onChange={handleInputChange}>Start Time</Input>
-        {/*}
-        <Input value={movie.title} name="title" onChange={title === 'New Movie' ? onChange : () => {}} required={true}>Title</Input>
-        <Input value={movie.description} name="description" onChange={onChange} required={true}>
-          Description
-        </Input>*/}
-
+        <Input type="select" name="movie" onChange={handleInputChange} optionList={movieArray}>Movie</Input>
+        <Input type="select" name="cinemaHall" onChange={handleInputChange} optionList={hallArray}>Cinema Hall</Input>
       </div>
     </Modal>
   );
