@@ -1,3 +1,6 @@
+import { Movie, fetchMovies } from '../services/movieService';
+import { CinemaHall, fetchCinemaHalls } from '../services/cinemaHallService';
+
 const dateOptions = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
 const timeOptions = { hour: '2-digit', minute: '2-digit' };
 
@@ -6,11 +9,26 @@ export function formatTimeStamp(timeStamp: string): string {
   return `${date.toLocaleDateString('en-US', dateOptions)} | ${date.toLocaleTimeString('en-US', timeOptions)}`;
 }
 
-export function getMovieTitleArray(): string[] {
+export async function getMovieTitleArray() {
+  const movieTitleArray: string[] = [] as string[];
+  const response = await fetchMovies();
+  const movieList = await response.json();
 
-  return ['Blast from the Past', 'Kokowäääh', 'The wolf of wallstreet'];
+  movieList.forEach((movie: Movie) => {
+    movieTitleArray.push(movie.title);
+  });
+
+  return movieTitleArray;
 }
 
-export function getCinemaHallNameArray(): string[] {
-  return ['IMAX Shizzle', 'SAAl 3', 'SUPREME SAAL 4'];
+export async function getCinemaHallNameArray() {
+  const cinemaHallNameArray: string[] = [] as string[];
+  const response = await fetchCinemaHalls();
+  const hallList = await response.json();
+
+  hallList.forEach((hall: CinemaHall) => {
+    cinemaHallNameArray.push(hall.name);
+  });
+
+  return cinemaHallNameArray;
 }

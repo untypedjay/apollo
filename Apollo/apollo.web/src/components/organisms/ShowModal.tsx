@@ -2,8 +2,8 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import Modal from '../templates/Modal';
 import Input from '../atoms/Input';
 import { insertShow, Show } from '../../services/showService';
+import { getCinemaHallNameArray, getMovieTitleArray } from '../../helpers/converter';
 import './ShowModal.css';
-import {getCinemaHallNameArray, getMovieTitleArray} from '../../helpers/converter';
 
 interface Props {
   closeModal: () => void;
@@ -12,8 +12,19 @@ interface Props {
 function ShowModal({ closeModal }: Props) {
   const [show, setShow] = useState({} as Show);
   const title = 'New Show';
-  const movieArray = getMovieTitleArray();
-  const hallArray = getCinemaHallNameArray();
+  const [movieArray, setMovieArray] = useState<string[]>([]);
+  const [hallArray, setHallArray] = useState<string[]>([]);
+
+  useEffect(() => {
+    getOptionsData();
+  }, []);
+
+  const getOptionsData = async () => {
+    const movieData = await getMovieTitleArray();
+    const hallData = await getCinemaHallNameArray();
+    setMovieArray(movieData);
+    setHallArray(hallData);
+  };
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
