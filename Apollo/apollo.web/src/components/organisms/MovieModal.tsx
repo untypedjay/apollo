@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import Modal from '../templates/Modal';
 import Input from '../atoms/Input';
-import { insertMovie, Movie } from '../../services/movieService';
+import {insertMovie, Movie, updateMovie} from '../../services/movieService';
 import './MovieModal.css';
 
 interface Props {
@@ -17,9 +17,9 @@ function MovieModal({ closeModal, movie, onChange }: Props) {
     if (!movie.title) {
       setTitle('New Movie');
     }
-  }, [])
+  }, [movie.title])
 
-  const saveMovie = async () => {
+  const addMovie = async () => {
     if (!movie.title || movie.title.replace(/ /g, '').length === 0) {
       alert('Please fill out a movie title!');
       return;
@@ -51,8 +51,31 @@ function MovieModal({ closeModal, movie, onChange }: Props) {
     }
   };
 
-  const updateMovie = () => {
-    alert('Updta')
+  const saveMovie = async () => {
+    if (!movie.length || movie.length < 1 || movie.length > 500) {
+      alert('Please enter a valid movie length!');
+      return;
+    }
+
+    const movieToUpdate: Movie = {
+      title: movie.title,
+      description: movie.description || '',
+      genre: movie.genre || '',
+      length: movie.length,
+      actors: movie.actors || '',
+      imageURL: movie.imageURL || '',
+      trailerURL: movie.trailerURL || ''
+    };
+
+    const response = await updateMovie(movieToUpdate);
+    if (response.status === 204) {
+      closeModal();
+    } else if (response.status === 409) {
+      alert(`ERROR: A movie with the title "${movieToUpdate.title}" already exists!`)
+    } else {
+      alert(`ERROR: Could not add movie (${response.status})`);
+      console.log(response);
+    }
   };
 
   return (
@@ -60,10 +83,10 @@ function MovieModal({ closeModal, movie, onChange }: Props) {
       title={title}
       closeAction={closeModal}
       secondaryAction={closeModal}
-      primaryAction={title === 'Edit Movie' ? updateMovie : saveMovie}
+      primaryAction={title === 'Edit Movie' ? saveMovie : addMovie}
     >
       <div className="movie-modal__container movie-modal__container--vertical">
-        <Input value={movie.title} name="title" onChange={onChange} required={true}>Title</Input>
+        <Input value={movie.title} name="title" onChange={title === 'New Movie' ? onChange : () => {}} required={true}>Title</Input>
         <Input value={movie.description} name="description" onChange={onChange} required={true}>
           Description
         </Input>

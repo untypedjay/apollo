@@ -4,7 +4,6 @@ import Button from '../atoms/Button';
 import MovieModal from './MovieModal';
 import { Movie, fetchMovies, deleteMovie } from '../../services/movieService';
 import './ManageMovies.css';
-import {emptyMovie} from '../../context/MovieContext';
 
 function ManageMovies() {
   const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
