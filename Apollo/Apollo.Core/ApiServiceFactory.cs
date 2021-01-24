@@ -41,5 +41,10 @@ namespace Apollo.Core
         {
             return new CinemaHallService(daoProvider);
         }
+
+        public static SeatCategoryService GetSeatCategoryService()
+        {
+            return new SeatCategoryService(daoProvider);
+        }
     }
 }

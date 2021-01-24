@@ -31,7 +31,7 @@ namespace Apollo.Api
             services.AddScoped<IShowService>(provider => ApiServiceFactory.GetShowService());
             services.AddScoped<IMovieService>(provider => ApiServiceFactory.GetMovieService());
             services.AddScoped<ICinemaHallService>(provider => ApiServiceFactory.GetCinemaHallService());
-            // TODO: add other services here
+            services.AddScoped<ISeatCategoryService>(provider => ApiServiceFactory.GetSeatCategoryService());
 
             services.AddOpenApiDocument();
 
