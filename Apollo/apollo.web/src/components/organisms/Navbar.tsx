@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/apollo-logo.png';
 import './Navbar.css';
+import Button from '../atoms/Button';
 
 function Navbar() {
   return (
@@ -12,6 +13,7 @@ function Navbar() {
         <li><Link className="navbar__link" to="/today">Today</Link></li>
         <li><Link className="navbar__link" to="/search">Search</Link></li>
         <li><Link className="navbar__link" to="/login">Login</Link></li>
+        <li><Button buttonType="link">Logout</Button></li>
       </ul>
     </nav>
   );

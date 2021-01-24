@@ -35,3 +35,13 @@
 .button--secondary:hover:enabled {
     background-color: var(--clr-secondary-hover);
 }
+
+.button--link {
+    text-decoration: none;
+    color: var(--clr-text);
+    font-size: 1.1rem;
+}
+
+.button--link:hover:enabled {
+    text-decoration: underline;
+}
