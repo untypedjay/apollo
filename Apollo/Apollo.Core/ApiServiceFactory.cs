@@ -36,5 +36,10 @@ namespace Apollo.Core
         {
             return new MovieService(daoProvider);
         }
+
+        public static CinemaHallService GetCinemaHallService()
+        {
+            return new CinemaHallService(daoProvider);
+        }
     }
 }

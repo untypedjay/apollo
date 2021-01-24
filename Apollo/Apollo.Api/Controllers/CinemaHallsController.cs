@@ -9,9 +9,9 @@ namespace Apollo.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CinemasController : ControllerBase
+    public class CinemaHallsController : ControllerBase
     {
-        public CinemasController(ICinemaHallService logic)
+        public CinemaHallsController(ICinemaHallService logic)
         {
             Logic = logic;
         }
@@ -44,9 +44,15 @@ namespace Apollo.Api.Controllers
                 return NotFound();
             }
 
-            await Logic.Delete(data);
-            await Logic.Insert(data);
-            return NoContent();
+            bool deleteSuccess = await Logic.Delete(data);
+            bool insertSuccess = await Logic.Insert(data);
+
+            if (deleteSuccess && insertSuccess)
+            {
+                return NoContent();
+            }
+
+            return new ObjectResult(data) { StatusCode = StatusCodes.Status403Forbidden };
         }
 
         [HttpDelete]

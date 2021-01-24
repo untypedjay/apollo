@@ -1,6 +1,5 @@
 using Apollo.Core;
 using Apollo.Core.Interface.Services;
-using Apollo.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +30,7 @@ namespace Apollo.Api
                 .AddXmlDataContractSerializerFormatters();
             services.AddScoped<IShowService>(provider => ApiServiceFactory.GetShowService());
             services.AddScoped<IMovieService>(provider => ApiServiceFactory.GetMovieService());
+            services.AddScoped<ICinemaHallService>(provider => ApiServiceFactory.GetCinemaHallService());
             // TODO: add other services here
 
             services.AddOpenApiDocument();
