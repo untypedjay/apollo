@@ -2,8 +2,9 @@ import React, { DetailedHTMLProps, ButtonHTMLAttributes } from 'react';
 import './Button.css';
 
 interface Props extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  loading?: boolean,
-  buttonType?: string
+  loading?: boolean;
+  buttonType?: string;
+  onClick: any;
 }
 
 function Button({

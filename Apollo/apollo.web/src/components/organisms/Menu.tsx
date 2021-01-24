@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaChair, FaFilm, FaCalendarAlt } from 'react-icons/fa';
+import { FaHome, FaChair, FaFilm, FaCalendarAlt, FaSignOutAlt } from 'react-icons/fa';
 import MenuItem from '../molecules/MenuItem';
 import Logo from '../../images/apollo-logo.png';
 import './Menu.css';
@@ -38,6 +38,13 @@ function Menu({ selected }: Props) {
         selected={selected === '/admin/halls'}
         route="/admin/halls"
         icon={<FaChair className="menu__icon" size={iconSize}/>}
+      />
+
+      <MenuItem
+        selected={selected === '/'}
+        route="/"
+        icon={<FaSignOutAlt className="menu__icon" size={iconSize}/>}
+        shouldLogout={true}
       />
     </div>
   );

@@ -40,6 +40,7 @@
     text-decoration: none;
     color: var(--clr-text);
     font-size: 1.1rem;
+    padding: 0;
 }
 
 .button--link:hover:enabled {
