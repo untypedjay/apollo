@@ -8,7 +8,7 @@ namespace Apollo.Core.Interface.Services
     {
         Task<IEnumerable<Movie>> GetAllMovies();
         Task<bool> MovieExists(Movie movie);
-        Task Insert(Movie movie);
-        Task Delete(Movie movie);
+        Task<bool> Insert(Movie movie);
+        Task<bool> Delete(Movie movie);
     }
 }

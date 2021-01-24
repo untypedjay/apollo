@@ -12,9 +12,9 @@ namespace Apollo.Core.Services
         {
         }
 
-        public async Task Delete(Movie movie)
+        public async Task<bool> Delete(Movie movie)
         {
-            await DaoProvider.MovieDao.DeleteAsync(movie);
+            return await DaoProvider.MovieDao.DeleteAsync(movie);
         }
 
         public async Task<IEnumerable<Movie>> GetAllMovies()
@@ -22,9 +22,9 @@ namespace Apollo.Core.Services
             return await DaoProvider.MovieDao.FindAllAsync();
         }
 
-        public async Task Insert(Movie movie)
+        public async Task<bool> Insert(Movie movie)
         {
-            await DaoProvider.MovieDao.InsertAsync(movie);
+            return await DaoProvider.MovieDao.InsertAsync(movie);
         }
 
         public async Task<bool> MovieExists(Movie movie)

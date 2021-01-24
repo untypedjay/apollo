@@ -9,25 +9,25 @@ namespace Apollo.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class CinemasController : ControllerBase
     {
-        public MoviesController(IMovieService logic)
+        public CinemasController(ICinemaHallService logic)
         {
             Logic = logic;
         }
 
-        private IMovieService Logic { get; }
+        private ICinemaHallService Logic { get; }
 
         [HttpGet]
-        public async Task<IEnumerable<Movie>> GetAll()
+        public async Task<IEnumerable<CinemaHall>> GetAll()
         {
-            return await Logic.GetAllMovies();
+            return await Logic.GetAllCinemaHalls();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Insert([FromBody] Movie data)
+        public async Task<ActionResult> Insert([FromBody] CinemaHall data)
         {
-            if (await Logic.MovieExists(data))
+            if (await Logic.CinemaHallExists(data))
             {
                 return Conflict();
             }
@@ -37,9 +37,9 @@ namespace Apollo.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Movie data)
+        public async Task<ActionResult> Update([FromBody] CinemaHall data)
         {
-            if (!await Logic.MovieExists(data))
+            if (!await Logic.CinemaHallExists(data))
             {
                 return NotFound();
             }
@@ -50,9 +50,9 @@ namespace Apollo.Api.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete([FromBody] Movie data)
+        public async Task<ActionResult> Delete([FromBody] CinemaHall data)
         {
-            if (!await Logic.MovieExists(data))
+            if (!await Logic.CinemaHallExists(data))
             {
                 return NotFound();
             }
