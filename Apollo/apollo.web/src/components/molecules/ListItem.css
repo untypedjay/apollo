@@ -7,6 +7,12 @@
 
 .list-item__text {
     color: var(--clr-text);
+    margin: 0;
+}
+
+.list-item__text--bold {
+    font-weight: bold;
+    padding-bottom: 0.4em;
 }
 
 .list-item__icon--white {

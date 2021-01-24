@@ -75,7 +75,7 @@ function ManageHalls() {
       <HallModal closeModal={() => setIsModalOpen(false)} hall={currentHall} onChange={handleInputChange}/>
       }
       <Button onClick={openNewHallModal}>New Cinema Hall</Button>
-      <List title="Cinema Halls" data={halls} property="name" editAction={editHall} deleteAction={removeHall}/>
+      <List title="Cinema Halls" data={halls} property="name" editAction={editHall} deleteAction={removeHall} extraProperty="rowAmount"/>
     </div>
   );
 }
