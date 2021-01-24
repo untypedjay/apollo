@@ -14,6 +14,10 @@ function ManageMovies() {
     getMovies();
   }, [isLoading]);
 
+  useEffect(() => {
+    setIsLoading(true);
+  }, [isModalOpen]);
+
   const getMovies = async () => {
     const response = await fetchMovies();
     setMovies(await response.json());
@@ -49,7 +53,7 @@ function ManageMovies() {
 
   return (
     <div className="manage-movies">
-      { isModalOpen && <MovieModal title="Edit Movie" closeModal={() => setIsModalOpen(false)}/> }
+      { isModalOpen && <MovieModal closeModal={() => setIsModalOpen(false)}/> }
       <Button onClick={() => setIsModalOpen(true)}>New Movie</Button>
       <List title="Movies" data={movies} property="title" editAction={editMovie} deleteAction={removeMovie}/>
     </div>
