@@ -9,8 +9,8 @@
 
 .modal__card {
     background-color: var(--clr-secondary);
-    width: 40%;
-    left: 30%;
+    width: 46%;
+    left: 27%;
     top: 8%;
     position: absolute;
     padding: 1em 1.5em 1em 1.5em;
@@ -43,4 +43,5 @@
     display: flex;
     padding-top: 1em;
     justify-content: flex-end;
+    gap: 1em;
 }

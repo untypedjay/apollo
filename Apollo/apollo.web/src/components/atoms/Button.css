@@ -27,3 +27,12 @@
 .button--primary:hover:enabled {
     background-color: var(--clr-accent-hover);
 }
+
+.button--secondary {
+    border: 1px solid var(--clr-text);
+    color: var(--clr-text);
+}
+
+.button--secondary:hover:enabled {
+    background-color: var(--clr-secondary-hover);
+}
