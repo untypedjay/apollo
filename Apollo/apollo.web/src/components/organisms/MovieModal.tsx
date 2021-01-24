@@ -1,5 +1,4 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { useMovie } from '../../context/MovieContext';
 import Modal from '../templates/Modal';
 import Input from '../atoms/Input';
 import { insertMovie, Movie } from '../../services/movieService';
@@ -7,29 +6,18 @@ import './MovieModal.css';
 
 interface Props {
   closeModal: () => void;
+  movie: Movie;
+  onChange: (event: FormEvent<HTMLInputElement>) => void;
 }
 
-function MovieModal({ closeModal }: Props) {
-  const movieToEdit = useMovie();
-  const [movie, setMovie] = useState<Movie>({} as Movie);
-  const [title, setTitle] = useState('');
+function MovieModal({ closeModal, movie, onChange }: Props) {
+  const [title, setTitle] = useState('Edit Movie');
 
   useEffect(() => {
-    if (movieToEdit.title) {
-      setTitle('Edit Movie');
-      setMovie(movieToEdit);
-    } else {
+    if (!movie.title) {
       setTitle('New Movie');
     }
-  }, [movieToEdit])
-
-  const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
-    const eventTarget: any = event.target;
-    const updatedMovie: Movie = movie;
-    // @ts-ignore
-    updatedMovie[eventTarget.name] = eventTarget.value;
-    setMovie(updatedMovie);
-  };
+  }, [])
 
   const saveMovie = async () => {
     if (!movie.title || movie.title.replace(/ /g, '').length === 0) {
@@ -63,24 +51,33 @@ function MovieModal({ closeModal }: Props) {
     }
   };
 
+  const updateMovie = () => {
+    alert('Updta')
+  };
+
   return (
-    <Modal title={title} closeAction={closeModal} secondaryAction={closeModal} primaryAction={saveMovie}>
+    <Modal
+      title={title}
+      closeAction={closeModal}
+      secondaryAction={closeModal}
+      primaryAction={title === 'Edit Movie' ? updateMovie : saveMovie}
+    >
       <div className="movie-modal__container movie-modal__container--vertical">
-        <Input value={movie.title} name="title" onChange={handleInputChange} required={true}>Title</Input>
-        <Input value={movie.description} name="description" onChange={handleInputChange} required={true}>
+        <Input value={movie.title} name="title" onChange={onChange} required={true}>Title</Input>
+        <Input value={movie.description} name="description" onChange={onChange} required={true}>
           Description
         </Input>
         <div className="movie-modal__container movie-modal__container--horizontal">
-          <Input value={movie.genre} name="genre" onChange={handleInputChange} required={true}>Genres</Input>
-          <Input type="number" value={movie.length} name="length" onChange={handleInputChange} required={true}>
+          <Input value={movie.genre} name="genre" onChange={onChange} required={true}>Genres</Input>
+          <Input type="number" value={movie.length} name="length" onChange={onChange} required={true}>
             Length
           </Input>
         </div>
-        <Input value={movie.actors} name="actors" onChange={handleInputChange} required={true}>Actors</Input>
-        <Input value={movie.imageURL} name="imageURL" onChange={handleInputChange} required={true}>
+        <Input value={movie.actors} name="actors" onChange={onChange} required={true}>Actors</Input>
+        <Input value={movie.imageURL} name="imageURL" onChange={onChange} required={true}>
           Wallpaper URL
         </Input>
-        <Input value={movie.trailerURL} name="trailerURL" onChange={handleInputChange} required={true}>
+        <Input value={movie.trailerURL} name="trailerURL" onChange={onChange} required={true}>
           Trailer URL
         </Input>
       </div>

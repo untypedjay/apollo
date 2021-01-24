@@ -7,8 +7,18 @@ type Props = {
 
 type MovieUpdate = (newMovie: Movie) => void;
 
-const MovieContext = React.createContext<Movie>({} as Movie);
-const MovieUpdateContext = React.createContext<MovieUpdate | null>(null);
+export const emptyMovie: Movie = {
+  title: '',
+  description: '',
+  genre: '',
+  length: 0,
+  actors: '',
+  imageURL: '',
+  trailerURL: ''
+};
+
+const MovieContext = React.createContext<Movie>(emptyMovie);
+const MovieUpdateContext = React.createContext<MovieUpdate>(() => {});
 
 export function useMovie() {
   return useContext(MovieContext);
