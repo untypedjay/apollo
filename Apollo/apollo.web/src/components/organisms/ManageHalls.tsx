@@ -1,6 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import List from './List';
 import Button from '../atoms/Button';
+import HallModal from './HallModal';
 import { CinemaHall, deleteCinemaHall, fetchCinemaHalls } from '../../services/cinemaHallService';
 import './ManageHalls.css';
 
