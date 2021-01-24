@@ -14,6 +14,12 @@ namespace Apollo.Core.Services
 
         public async Task<bool> Delete(Movie movie)
         {
+            ICollection<Show> shows = (ICollection<Show>)await DaoProvider.ShowDao.FindByMovieAsync(movie);
+            if (shows.Count > 0)
+            {
+                return false;
+            }
+
             return await DaoProvider.MovieDao.DeleteAsync(movie);
         }
 

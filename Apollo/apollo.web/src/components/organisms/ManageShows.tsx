@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import List from './List';
+import ShowList from './ShowList';
 import Button from '../atoms/Button';
 import { deleteShow, fetchShows, Show } from '../../services/showService';
+import ShowModal from './ShowModal';
 import './ManageShows.css';
 
 function ManageShows() {
@@ -11,7 +12,7 @@ function ManageShows() {
 
   useEffect(() => {
     getShows();
-  }, [isLoading]);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -47,12 +48,9 @@ function ManageShows() {
       <ShowModal closeModal={() => setIsModalOpen(false)}/>
       }
       <Button onClick={() => setIsModalOpen(true)}>New Show</Button>
-      <List
-        title="Shows"
-        data={shows}
-        property="movie"
+      <ShowList
+        shows={shows}
         deleteAction={removeShow}
-        extraProperty="cinemaHall"
       />
     </div>
   );

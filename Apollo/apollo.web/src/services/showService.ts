@@ -4,7 +4,7 @@ import { CinemaHall } from './cinemaHallService';
 const BASE_ENDPOINT = 'http://localhost:5000/api/shows';
 
 export type Show = {
-  timeStamp: string,
+  startsAt: string,
   movie: Movie,
   cinemaHall: CinemaHall
 }
