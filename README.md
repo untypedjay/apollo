@@ -23,6 +23,14 @@ This projekt contains the domain entities of the backend. They are similar to th
 
 A desktop application developed using the Windows Presentation Foundation. Its purpose is to buy ticket on-site in the cinema in an intuitive, fast and automated way.
 
+**`Apollo.Web`**
+
+A web application using React and TypeScript. It shows the cinema's program and has an admin section to administrate the entire content.
+
+**`Apollo.Api`**
+
+The REST service used by `Apollo.Web` in order to receive all necessary data. Developed using ASP.NET Core.
+
 ### Domain Model
 ![Apollo Domain Model](docs/domain-model.svg)
 
