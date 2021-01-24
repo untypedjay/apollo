@@ -1,0 +1,9 @@
+.search__main {
+    margin-top: 7em;
+}
+
+.search__search-bar {
+    display: flex;
+    margin: 1em;
+    gap: 1em;
+}
