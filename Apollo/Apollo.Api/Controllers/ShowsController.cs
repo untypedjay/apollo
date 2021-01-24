@@ -40,8 +40,8 @@ namespace Apollo.Api.Controllers
             }
 
             await Logic.Insert(data);
-            Show createdShow = new Show(data.StartsAt, data.Movie, data.CinemaHall);
-            return new ObjectResult(createdShow) { StatusCode = StatusCodes.Status201Created };
+            
+            return new ObjectResult(data) { StatusCode = StatusCodes.Status201Created };
         }
         
         [HttpDelete]
@@ -52,21 +52,12 @@ namespace Apollo.Api.Controllers
                 return NotFound();
             }
 
-            await Logic.Delete(data);
-            return NoContent();
-        }
-
-        [HttpPut]
-        public async Task<ActionResult> Update([FromBody] Show data)
-        {
-            if (!await Logic.ShowExists(data))
+            bool success = await Logic.Delete(data);
+            if (success)
             {
-                return NotFound();
+                return NoContent();
             }
-
-            await Logic.Delete(data);
-            await Logic.Insert(data);
-            return NoContent();
+            return new ObjectResult(data) { StatusCode = StatusCodes.Status403Forbidden };
         }
     }
 }

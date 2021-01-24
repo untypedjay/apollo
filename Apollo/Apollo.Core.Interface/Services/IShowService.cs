@@ -11,7 +11,7 @@ namespace Apollo.Core.Interface.Services
         Task<IEnumerable<Show>> GetShowsByMovieSearch(string search);
         Task<IEnumerable<Show>> GetShowsByGenreSearch(string search);
         Task<bool> ShowExists(Show show);
-        Task Insert(Show show);
-        Task Delete(Show show);
+        Task<bool> Insert(Show show);
+        Task<bool> Delete(Show show);
     }
 }

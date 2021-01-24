@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -91,8 +92,14 @@ namespace Apollo.Core
             {
                 command.CommandText = sql;
                 AddParameters(command, parameters);
-
-                return await command.ExecuteNonQueryAsync();
+                try
+                {
+                    return await command.ExecuteNonQueryAsync();
+                }
+                catch (SqlException ex)
+                {
+                    return 0;
+                }
             }
         }
 

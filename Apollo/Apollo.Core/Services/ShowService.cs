@@ -12,9 +12,9 @@ namespace Apollo.Core.Services
         {
         }
 
-        public async Task Delete(Show show)
+        public async Task<bool> Delete(Show show)
         {
-            await DaoProvider.ShowDao.DeleteAsync(show);
+            return await DaoProvider.ShowDao.DeleteAsync(show);
         }
 
         public async Task<IEnumerable<Show>> GetAllShows()
@@ -44,9 +44,9 @@ namespace Apollo.Core.Services
             return await DaoProvider.ShowDao.FindByExactDateAsync(DateTime.Now);
         }
 
-        public async Task Insert(Show show)
+        public async Task<bool> Insert(Show show)
         {
-            await DaoProvider.ShowDao.InsertAsync(show);
+            return await DaoProvider.ShowDao.InsertAsync(show);
         }
 
         public async Task<bool> ShowExists(Show show)
