@@ -44,7 +44,9 @@ function MovieModal({ closeModal, movie, onChange }: Props) {
     if (response.status === 201) {
       closeModal();
     } else if (response.status === 409) {
-      alert(`ERROR: A movie with the title "${newMovie.title}" already exists!`)
+      alert(`ERROR: A movie with the title "${newMovie.title}" already exists!`);
+    } else if (response.status === 403) {
+      alert('ERROR: Could not add movie because there are shows depending on that movie!');
     } else {
       alert(`ERROR: Could not add movie (${response.status})`);
       console.log(response);
@@ -71,9 +73,11 @@ function MovieModal({ closeModal, movie, onChange }: Props) {
     if (response.status === 204) {
       closeModal();
     } else if (response.status === 409) {
-      alert(`ERROR: A movie with the title "${movieToUpdate.title}" already exists!`)
+      alert(`ERROR: A movie with the title "${movieToUpdate.title}" already exists!`);
+    } else if (response.status === 403) {
+      alert('ERROR: Could not update movie because there are shows relying on that data!');
     } else {
-      alert(`ERROR: Could not add movie (${response.status})`);
+      alert(`ERROR: Could not update movie (${response.status})`);
       console.log(response);
     }
   };

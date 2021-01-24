@@ -51,6 +51,8 @@ function ManageMovies() {
       const response = await deleteMovie(movie);
       if (response.status === 204) {
         setIsLoading(true);
+      } else if (response.status === 403) {
+        alert(`ERROR: Could not delete movie because there are existing shows depending on that movie!`);
       } else {
         alert(`ERROR: Could not delete movie (${response.status})`);
         console.log(response);
