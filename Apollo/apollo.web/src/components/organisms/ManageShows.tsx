@@ -30,7 +30,6 @@ function ManageShows() {
   };
 
   const removeShow = async (show: Show) => {
-    console.log(show);
     const toDelete = window.confirm(`Do you really want to delete this show?`);
     if (toDelete && show) {
       const response = await deleteShow(show);

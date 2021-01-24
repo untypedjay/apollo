@@ -4,7 +4,7 @@ import Footer from '../organisms/Footer';
 import Input from '../atoms/Input';
 import './Search.css';
 import Button from '../atoms/Button';
-import {searchByMovieTitle} from '../../helpers/search';
+import {searchByDate, searchByMovieTitle} from '../../helpers/search';
 import ShowContainer from '../templates/ShowContainer';
 
 function Search() {
@@ -26,7 +26,8 @@ function Search() {
       const filteredShows = await searchByMovieTitle(movieSearch);
       setResults(filteredShows);
     } else {
-
+      const filteredShows = await searchByDate(dateSearch);
+      setResults(filteredShows);
     }
   }
 
