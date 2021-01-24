@@ -1,10 +1,12 @@
 import { Movie } from './movieService';
+import { CinemaHall } from './cinemaHallService';
 
 const BASE_ENDPOINT = 'http://localhost:5000/api/shows';
 
 export type Show = {
   timeStamp: string,
-  movie: Movie
+  movie: Movie,
+  cinemaHall: CinemaHall
 }
 
 export async function fetchShows() {
