@@ -12,9 +12,6 @@ export async function searchByDate(dateString: string) {
   const shows = await response.json();
   return shows.filter((show: Show) => {
     const startsAt = new Date(show.startsAt);
-    console.log(startsAt.toLocaleDateString());
-    console.log(date.toLocaleDateString());
     return startsAt.toLocaleDateString() === date.toLocaleDateString();
-
   });
 }

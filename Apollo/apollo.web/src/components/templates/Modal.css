@@ -9,12 +9,21 @@
 
 .modal__card {
     background-color: var(--clr-secondary);
-    width: 46%;
-    left: 27%;
-    top: 8%;
     position: absolute;
     padding: 1em 1.5em 1em 1.5em;
     border-radius: var(--rds-card);
+}
+
+.modal__card--fullscreen {
+    width: 60%;
+    left: 20%;
+    top: 1%;
+}
+
+.modal__card--small {
+    width: 46%;
+    left: 27%;
+    top: 8%;
 }
 
 .modal__title {

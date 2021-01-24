@@ -4,25 +4,26 @@ import Button from '../atoms/Button';
 import './Modal.css';
 
 interface Props {
-  title: string;
+  title?: string;
   closeAction: () => void;
   children: ReactNode;
-  secondaryAction: () => void;
-  primaryAction: () => void;
+  secondaryAction?: () => void;
+  primaryAction?: () => void;
+  fullscreen?: boolean;
 };
 
-function Modal({ title, closeAction, children, secondaryAction, primaryAction }: Props) {
+function Modal({ title, closeAction, children, secondaryAction, primaryAction, fullscreen = false }: Props) {
   return (
     <div className="modal">
-      <div className="modal__card">
-        <h3 className="modal__title">{ title }</h3>
+      <div className={fullscreen ? 'modal__card modal__card--fullscreen' : 'modal__card modal__card--small'}>
+        { title && <h3 className="modal__title">{ title }</h3> }
         <button className="modal__close-button" onClick={closeAction} title="Close">
           <FaTimes className="modal__icon" size="30px"/>
         </button>
         { children }
         <div className="modal__footer">
-          <Button buttonType="secondary" onClick={secondaryAction}>Cancel</Button>
-          <Button onClick={primaryAction}>OK</Button>
+          { secondaryAction && <Button buttonType="secondary" onClick={secondaryAction}>Cancel</Button> }
+          { primaryAction && <Button onClick={primaryAction}>OK</Button> }
         </div>
       </div>
     </div>
