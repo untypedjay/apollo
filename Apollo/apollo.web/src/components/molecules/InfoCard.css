@@ -1,0 +1,14 @@
+.info-card {
+    background-color: var(--clr-primary);
+    color: var(--clr-text);
+    border-radius: var(--rds-card);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-card__data {
+    font-weight: bold;
+    font-size: 4rem;
+}
