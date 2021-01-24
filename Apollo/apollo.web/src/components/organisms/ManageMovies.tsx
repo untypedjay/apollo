@@ -1,4 +1,4 @@
-import React, {FormEvent, useEffect, useState} from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import List from './List';
 import Button from '../atoms/Button';
 import MovieModal from './MovieModal';
