@@ -1,15 +1,17 @@
 import React, { useState, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 import ApolloLogo from '../../images/apollo-logo.png';
 import './Login.css';
 
 function Login() {
+  const { loginWithRedirect } = useAuth0();
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
-  const [stayLoggedInValue, setStayLoggedInValue] = useState(false);
   const history = useHistory();
+
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
@@ -17,8 +19,6 @@ function Login() {
       setEmailValue(eventTarget.value);
     } else if (eventTarget.name === 'password') {
       setPasswordValue(eventTarget.value);
-    } else {
-      setStayLoggedInValue(eventTarget.checked);
     }
   };
 
@@ -38,9 +38,8 @@ function Login() {
         <div className="login__form">
           <Input type="email" value={emailValue} name="email" onChange={handleInputChange}>Email</Input>
           <Input type="password" value={passwordValue} name="password" onChange={handleInputChange}>Password</Input>
-          <input type="checkbox" checked={stayLoggedInValue} onChange={handleInputChange} name="stayLoggedIn"/>
           <Button onClick={login}>Login</Button>
-          <Link to={''}>Forgot password?</Link>
+          <Button buttonType="secondary" onClick={() => loginWithRedirect()}>Login with Auth0</Button>
         </div>
       </div>
     </div>

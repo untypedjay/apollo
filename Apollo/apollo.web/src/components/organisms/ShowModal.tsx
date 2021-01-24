@@ -44,18 +44,15 @@ function ShowModal({ closeModal }: Props) {
     const updatedShow: Show = JSON.parse(JSON.stringify(show));
     if (eventTarget.name === 'movie') {
       const movie = getMovieByTitle(movies, eventTarget.value);
-      console.log(movie);
       if (movie) updatedShow.movie = movie;
     } else if (eventTarget.name === 'cinemaHall') {
       const hall = getCinemaHallByName(halls, eventTarget.value);
-      console.log(hall)
       if (hall) updatedShow.cinemaHall = hall;
     } else {
       // @ts-ignore
       updatedShow[eventTarget.name] = eventTarget.value;
     }
 
-    console.log(updatedShow)
     setShow(updatedShow);
   };
 
