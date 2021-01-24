@@ -32,3 +32,11 @@ export async function getCinemaHallNameArray() {
 
   return cinemaHallNameArray;
 }
+
+export function getMovieByTitle(movieList: Movie[], movieTitle: string) {
+  return movieList.find((movie: Movie) => movie.title === movieTitle);
+}
+
+export function getCinemaHallByName(hallList: CinemaHall[], hallName: string) {
+  return hallList.find((hall: CinemaHall) => hall.name === hallName);
+}

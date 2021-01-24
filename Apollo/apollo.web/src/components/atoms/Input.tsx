@@ -10,7 +10,7 @@ interface Props extends DetailedHTMLProps<InputHTMLAttributes<any>, HTMLInputEle
 function Input({ type = 'text', value, name, onChange, children, optionList }: Props) {
   const renderSelectInput = () => {
     return (
-      <select className="input__input" value={value} onChange={onChange}>
+      <select className="input__input" value={value} name={name} onChange={onChange}>
         { optionList && optionList.map(option => {
           return <option className="input__option" key={option} value={option}>{ option }</option>;
         })}
