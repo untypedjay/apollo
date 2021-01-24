@@ -21,6 +21,7 @@ function ShowList({ shows, deleteAction }: Props) {
               key={`${show.movie?.title}${show.cinemaHall?.name}${show.startsAt}`}
               deleteAction={deleteAction}
               extraInfo={`${formatTimeStamp(show.startsAt)} | ${show.cinemaHall?.name}`}
+              show={show}
             >
               { show.movie?.title }
             </ListItem>

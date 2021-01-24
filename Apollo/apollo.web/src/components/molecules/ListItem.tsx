@@ -2,15 +2,25 @@ import React from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import Button from '../atoms/Button';
 import './ListItem.css';
+import {Show} from '../../services/showService';
 
 interface Props {
   editAction?: (item: any) => void;
   deleteAction: (item: any) => void;
   children: string;
   extraInfo: string;
+  show?: Show;
 }
 
-function ListItem({ editAction, deleteAction, children, extraInfo }: Props) {
+function ListItem({ editAction, deleteAction, children, extraInfo, show }: Props) {
+  const deleteItem = () => {
+    if (show) {
+      deleteAction(show);
+    } else {
+      deleteAction(children);
+    }
+  };
+
   return (
     <div className="list-item">
       <div className="list-item__text-container">
@@ -23,7 +33,7 @@ function ListItem({ editAction, deleteAction, children, extraInfo }: Props) {
             <FaEdit className="list-item__icon--white"/>
           </Button>
         }
-        <Button onClick={() => deleteAction(children)} buttonType="transparent">
+        <Button onClick={deleteItem} buttonType="transparent">
           <FaTrashAlt className="list-item__icon--red"/>
         </Button>
       </div>

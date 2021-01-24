@@ -12,7 +12,7 @@ function ManageShows() {
 
   useEffect(() => {
     getShows();
-  }, []);
+  }, [isLoading]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,11 +30,14 @@ function ManageShows() {
   };
 
   const removeShow = async (show: Show) => {
+    console.log(show);
     const toDelete = window.confirm(`Do you really want to delete this show?`);
     if (toDelete && show) {
       const response = await deleteShow(show);
       if (response.status === 204) {
         setIsLoading(true);
+      } else if (response.status === 403) {
+        alert('ERROR: Could not delete because there are reservations for this show!');
       } else {
         alert(`ERROR: Could not delete show (${response.status})`);
         console.log(response);
