@@ -6,11 +6,14 @@ import './Search.css';
 import Button from '../atoms/Button';
 import {searchByDate, searchByMovieTitle} from '../../helpers/search';
 import ShowContainer from '../templates/ShowContainer';
+import Empty from '../molecules/Empty';
+import Loader from '../atoms/Loader';
 
 function Search() {
   const [movieSearch, setMovieSearch] = useState('');
   const [dateSearch, setDateSearch] = useState('');
   const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (event: FormEvent<HTMLInputElement>): void => {
     const eventTarget: any = event.target;
@@ -22,6 +25,7 @@ function Search() {
   };
 
   const search = async () => {
+    setIsLoading(true);
     if (movieSearch.length > 0) {
       const filteredShows = await searchByMovieTitle(movieSearch);
       setResults(filteredShows);
@@ -29,7 +33,27 @@ function Search() {
       const filteredShows = await searchByDate(dateSearch);
       setResults(filteredShows);
     }
-  }
+    setIsLoading(false);
+  };
+
+  const renderSearchContainer = () => {
+    if (isLoading) {
+      return <Loader/>;
+    } else if (results.length === 0) {
+      return (
+        <>
+          <Empty/>
+        </>
+        );
+    } else {
+      return (
+        <>
+          <ShowContainer shows={results} title="Results"/>
+          <Footer/>
+        </>
+      );
+    }
+  };
 
   return (
     <div className="search">
@@ -40,10 +64,11 @@ function Search() {
           <Input type="datetime-local" value={dateSearch} name="date" onChange={handleInputChange}>Search by Date</Input>
           <Button onClick={search}>Search</Button>
         </div>
-        <ShowContainer shows={results}/>
+        <div className="search__container">
+          { renderSearchContainer() }
+        </div>
       </main>
-
-      <Footer/>
+      { isLoading && <Footer/> }
     </div>
   );
 }

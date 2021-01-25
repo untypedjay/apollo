@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   return (
     <div className="footer">
-      <p>&#169; Apollo Entertainment, { new Date().getFullYear() }</p>
+      <p>&#169; 2020-{ new Date().getFullYear() } Apollo Entertainment Inc.</p>
     </div>
   );
 }

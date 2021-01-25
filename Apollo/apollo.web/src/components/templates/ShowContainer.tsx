@@ -11,9 +11,16 @@ function ShowContainer({ title, shows }: Props) {
   return (
     <div className="show-container">
       { title && <h3 className="show-container__title">{title}</h3> }
-      {
-        shows.map(show => <ShowCard key={`${show.movie?.title}${show.cinemaHall?.name}${show.startsAt}`} show={show}/>)
-      }
+      <div className="show-container__grid">
+        {
+          shows.map(show => {
+            return (
+              <ShowCard key={`${show.movie?.title}${show.cinemaHall?.name}${show.startsAt}`} show={show}/>
+            );
+          })
+        }
+      </div>
+
     </div>
   );
 }
