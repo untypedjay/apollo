@@ -5,6 +5,7 @@ import { deleteShow, fetchShows, Show } from '../../services/showService';
 import ShowModal from './ShowModal';
 import './ManageShows.css';
 import Empty from '../molecules/Empty';
+import Loader from '../atoms/Loader';
 
 function ManageShows() {
   const [shows, setShows] = useState<Show[]>([] as Show[]);
@@ -45,15 +46,21 @@ function ManageShows() {
     }
   };
 
+  const renderContent = () => {
+    if (!isLoading && shows.length === 0) {
+      return <Empty/>;
+    } else {
+      return <ShowList shows={shows} deleteAction={removeShow}/>;
+    }
+  };
+
   return (
     <div className="manage-shows">
       { isModalOpen &&
       <ShowModal closeModal={() => setIsModalOpen(false)}/>
       }
       <Button onClick={() => setIsModalOpen(true)}>New Show</Button>
-      { shows.length === 0 ? <Empty/> :
-        <ShowList shows={shows} deleteAction={removeShow}/>
-      }
+      { renderContent() }
     </div>
   );
 }

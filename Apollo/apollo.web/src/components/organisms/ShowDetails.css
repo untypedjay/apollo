@@ -13,6 +13,7 @@
 .show-details__information {
     padding: 0 1em;
     display: flex;
+    gap: 1em;
 }
 
 .show-details__text--grey {

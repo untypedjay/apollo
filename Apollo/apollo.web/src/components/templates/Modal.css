@@ -5,13 +5,14 @@
     height: 100%;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
-    overflow-y: scroll;
+    overflow-y: hidden;
+    z-index: 10;
 }
 
 .modal__card {
     background-color: var(--clr-secondary);
     position: absolute;
-
+    z-index: 1;
     border-radius: var(--rds-card);
 }
 
