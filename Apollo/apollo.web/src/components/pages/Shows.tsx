@@ -3,6 +3,8 @@ import Navbar from '../organisms/Navbar';
 import { fetchShows } from '../../services/showService';
 import ShowContainer from '../templates/ShowContainer';
 import Footer from '../organisms/Footer';
+import Empty from '../molecules/Empty';
+import './Shows.css';
 
 function Shows() {
   const [shows, setShows] = useState([]);
@@ -22,7 +24,9 @@ function Shows() {
   return (
     <div className="shows">
       <Navbar/>
-      <ShowContainer shows={shows}/>
+      { shows.length === 0 ? <Empty/> :
+        <ShowContainer shows={shows}/>
+      }
       <Footer/>
     </div>
   );

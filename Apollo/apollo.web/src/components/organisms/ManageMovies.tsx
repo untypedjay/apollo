@@ -4,6 +4,7 @@ import Button from '../atoms/Button';
 import MovieModal from './MovieModal';
 import { Movie, fetchMovies, deleteMovie } from '../../services/movieService';
 import './ManageMovies.css';
+import Empty from '../molecules/Empty';
 
 function ManageMovies() {
   const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
@@ -75,14 +76,16 @@ function ManageMovies() {
         <MovieModal closeModal={() => setIsModalOpen(false)} movie={currentMovie} onChange={handleInputChange}/>
       }
       <Button onClick={openNewMovieModal}>New Movie</Button>
-      <List
-        title="Movies"
-        data={movies}
-        property="title"
-        editAction={editMovie}
-        deleteAction={removeMovie}
-        extraProperty="genre"
-      />
+      { movies.length === 0 ? <Empty/> :
+        <List
+          title="Movies"
+          data={movies}
+          property="title"
+          editAction={editMovie}
+          deleteAction={removeMovie}
+          extraProperty="genre"
+        />
+      }
     </div>
   );
 }

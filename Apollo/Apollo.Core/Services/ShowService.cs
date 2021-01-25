@@ -57,14 +57,10 @@ namespace Apollo.Core.Services
 
         public async Task<bool> ShowExists(Show show)
         {
-            if (await DaoProvider.MovieDao.FindByTitleAsync(show.Movie.Title) == null ||
-                await DaoProvider.CinemaHallDao.FindByNameAsync(show.CinemaHall.Name) == null ||
-                await DaoProvider.ShowDao.FindByExactTimeStampAsync(show.StartsAt) == null)
-            {
-                return false;
-            }
-
-            return true;
+            Movie movie = await DaoProvider.MovieDao.FindByTitleAsync(show.Movie.Title);
+            CinemaHall cinemaHall = await DaoProvider.CinemaHallDao.FindByNameAsync(show.CinemaHall.Name);
+            Show existingShow = await DaoProvider.ShowDao.FindByExactTimeStampAsync(show.StartsAt);
+            return movie != null && cinemaHall != null && existingShow != null;
         }
     }
 }

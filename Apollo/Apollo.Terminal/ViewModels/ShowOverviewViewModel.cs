@@ -8,9 +8,9 @@ namespace Apollo.Terminal.ViewModels
 {
     public class ShowOverviewViewModel
     {
-        private readonly IMovieService showService;
+        private readonly IShowService showService;
 
-        public ShowOverviewViewModel(IMovieService showService)
+        public ShowOverviewViewModel(IShowService showService)
         {
             this.showService = showService ?? throw new ArgumentNullException(nameof(showService));
             Shows = new ObservableCollection<Show>();
