@@ -14,9 +14,11 @@ function ShowCard({ show }: Props) {
     <>
       { isModalOpen && <ShowDetails show={show} close={() => setIsModalOpen(false)}/> }
       <button className="show-card" onClick={() => setIsModalOpen(true)}>
-        <img className="show-card__image" src={show.movie?.imageURL} alt={show.movie?.title}/>
-        <p className="show-card__details">{formatTimeStamp(show.startsAt)}</p>
-        <h3 className="show-card__title">{show.movie?.title}</h3>
+        <img className="show-card__image" src={show?.movie?.imageURL} alt={show?.movie?.title}/>
+        <div className="show-card__info">
+          <p className="show-card__details">{formatTimeStamp(show?.startsAt)}</p>
+          <h3 className="show-card__title">{show?.movie?.title}</h3>
+        </div>
       </button>
     </>
   );

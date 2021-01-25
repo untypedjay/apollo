@@ -5,6 +5,7 @@ import MovieModal from './MovieModal';
 import { Movie, fetchMovies, deleteMovie } from '../../services/movieService';
 import './ManageMovies.css';
 import Empty from '../molecules/Empty';
+import ShowList from './ShowList';
 
 function ManageMovies() {
   const [movies, setMovies] = useState<Movie[]>([] as Movie[]);
@@ -28,6 +29,23 @@ function ManageMovies() {
     } else {
       alert(`ERROR: Could not load movies (${response.status})`);
       console.log(response);
+    }
+  };
+
+  const renderContent = () => {
+    if (!isLoading && movies.length === 0) {
+      return <Empty/>;
+    } else {
+      return (
+        <List
+          title="Movies"
+          data={movies}
+          property="title"
+          editAction={editMovie}
+          deleteAction={removeMovie}
+          extraProperty="genre"
+        />
+      );
     }
   };
 
@@ -76,16 +94,7 @@ function ManageMovies() {
         <MovieModal closeModal={() => setIsModalOpen(false)} movie={currentMovie} onChange={handleInputChange}/>
       }
       <Button onClick={openNewMovieModal}>New Movie</Button>
-      { movies.length === 0 ? <Empty/> :
-        <List
-          title="Movies"
-          data={movies}
-          property="title"
-          editAction={editMovie}
-          deleteAction={removeMovie}
-          extraProperty="genre"
-        />
-      }
+      { renderContent() }
     </div>
   );
 }

@@ -11,7 +11,7 @@ interface Props {
 
 function ShowDetails({ show, close }: Props) {
   const videoId = getVideoIdFromUrl(show.movie.trailerURL);
-  const [availableSeats, setAvailableSeats] = useState(0);
+  const [availableSeats, setAvailableSeats] = useState(show.cinemaHall.seatAmount * show.cinemaHall.rowAmount);
   return (
     <Modal closeAction={close} fullscreen>
       <div className="show-details__container">
