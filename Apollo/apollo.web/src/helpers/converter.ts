@@ -40,3 +40,7 @@ export function getMovieByTitle(movieList: Movie[], movieTitle: string) {
 export function getCinemaHallByName(hallList: CinemaHall[], hallName: string) {
   return hallList.find((hall: CinemaHall) => hall.name === hallName);
 }
+
+export function getVideoIdFromUrl(videoURL: string) {
+  return videoURL.split('=')[1];
+}

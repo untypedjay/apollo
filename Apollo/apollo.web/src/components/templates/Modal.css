@@ -5,12 +5,13 @@
     height: 100%;
     width: 100%;
     background: rgba(255, 255, 255, 0.3);
+    overflow-y: scroll;
 }
 
 .modal__card {
     background-color: var(--clr-secondary);
     position: absolute;
-    padding: 1em 1.5em 1em 1.5em;
+
     border-radius: var(--rds-card);
 }
 
@@ -18,12 +19,14 @@
     width: 60%;
     left: 20%;
     top: 1%;
+    padding: 2.5em 0.1em 1em 0.1em;
 }
 
 .modal__card--small {
     width: 46%;
     left: 27%;
     top: 8%;
+    padding: 1em 1.5em 1em 1.5em;
 }
 
 .modal__title {
