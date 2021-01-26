@@ -1,6 +1,7 @@
 ﻿using Apollo.Core.Interface.Services;
 using Apollo.Domain;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -20,38 +21,33 @@ namespace Apollo.Terminal.ViewModels
 
         public async Task InitializeAsync()
         {
+            await GetShowsToday();
+        }
+
+        public async Task GetShowsToday()
+        {
             var shows = await showService.GetShowsToday();
-            foreach (var show in shows)
-            {
-                Shows.Add(show);
-            }
+            UpdateShows(shows);
         }
 
         public async Task SearchByTitle(string searchTerm)
         {
-            EmptyShowContainer();
             var shows = await showService.GetShowsByMovieSearch(searchTerm);
-            foreach (var show in shows)
-            {
-                Shows.Add(show);
-            }
+            UpdateShows(shows);
         }
 
         public async Task SearchByGenre(string searchTerm)
         {
-            EmptyShowContainer();
             var shows = await showService.GetShowsByGenreSearch(searchTerm);
+            UpdateShows(shows);
+        }
+
+        private void UpdateShows(IEnumerable<Show> shows)
+        {
+            Shows.Clear();
             foreach (var show in shows)
             {
                 Shows.Add(show);
-            }
-        }
-
-        private void EmptyShowContainer()
-        {
-            for (int i = 0; i < Shows.Count; i++)
-            {
-                Shows.Remove(Shows[i]);
             }
         }
     }

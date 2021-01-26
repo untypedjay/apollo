@@ -29,7 +29,11 @@ namespace Apollo.Terminal
         private async void searchButton_Click(object sender, RoutedEventArgs e)
         {
             string searchTerm = searchTextBox.Text;
-            if (searchTypeComboBox.Text == "Title")
+            if (searchTerm.Length == 0)
+            {
+                await showOverviewViewModel.GetShowsToday();
+            }
+            else if (searchTypeComboBox.Text == "Title")
             {
                 await showOverviewViewModel.SearchByTitle(searchTerm);
             }
