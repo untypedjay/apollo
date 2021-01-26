@@ -31,7 +31,7 @@ namespace Apollo.Terminal.Views
 
         private void completeButton_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            PaymentDialog paymentDialog = new PaymentDialog(showDetailsViewModel.Total);
+            PaymentDialog paymentDialog = new PaymentDialog(showDetailsViewModel.Total, showDetailsViewModel.ReservedSeats, showDetailsViewModel.Show);
             paymentDialog.ShowDialog();
         }
 
@@ -48,8 +48,7 @@ namespace Apollo.Terminal.Views
             var item = ItemsControl.ContainerFromElement(cinemaLayoutContainer, e.OriginalSource as DependencyObject) as ListBoxItem;
             if (item != null)
             {
-                Seat currentSeat = (Seat)item.DataContext;
-                showDetailsViewModel.AddToCheckout(currentSeat.SeatCategory.Price);
+                showDetailsViewModel.AddToCheckout((Seat)item.DataContext);
             }
         }
     }

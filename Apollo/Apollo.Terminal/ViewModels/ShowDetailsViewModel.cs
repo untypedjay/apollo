@@ -19,6 +19,7 @@ namespace Apollo.Terminal.ViewModels
             this.seatService = seatService ?? throw new ArgumentNullException(nameof(seatService));
             Seats = new ObservableCollection<Seat>();
             Total = 0;
+            ReservedSeats = new ObservableCollection<Seat>();
         }
 
         public Show Show { get; }
@@ -34,6 +35,8 @@ namespace Apollo.Terminal.ViewModels
                 NotifyPropertyChanged("Total");
             }
         }
+
+        public ObservableCollection<Seat> ReservedSeats { get; set; }
 
         public void NotifyPropertyChanged(string propertyName)
         {
@@ -52,9 +55,10 @@ namespace Apollo.Terminal.ViewModels
             }
         }
 
-        public void AddToCheckout(decimal amount)
+        public void AddToCheckout(Seat seat)
         {
-            Total = Total + amount;
+            ReservedSeats.Add(seat);
+            Total = Total + seat.SeatCategory.Price;
         }
     }
 }
