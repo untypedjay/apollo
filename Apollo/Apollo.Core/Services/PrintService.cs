@@ -15,7 +15,7 @@ namespace Apollo.Core.Services
                 page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment(paragraphs[i]));
             }
 
-            document.Save(fileName + ".pdf");
+            document.Save("../../../../../../../Desktop/" + fileName + ".pdf");
         }
     }
 }

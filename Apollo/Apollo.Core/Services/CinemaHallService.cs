@@ -35,7 +35,29 @@ namespace Apollo.Core.Services
 
         public async Task<bool> Insert(CinemaHall cinemaHall)
         {
-            return await DaoProvider.CinemaHallDao.InsertAsync(cinemaHall);
+            bool insertSuccess = await DaoProvider.CinemaHallDao.InsertAsync(cinemaHall);
+            if (insertSuccess)
+            {
+                IList<SeatCategory> seatCategories = (IList<SeatCategory>)await DaoProvider.SeatCategoryDao.FindAllAsync();
+                await CreateSeats(1, cinemaHall.RowAmount - 4, seatCategories[0], cinemaHall);
+                await CreateSeats(cinemaHall.RowAmount - 3, cinemaHall.RowAmount - 1, seatCategories[1], cinemaHall);
+                await CreateSeats(cinemaHall.RowAmount, cinemaHall.RowAmount, seatCategories[2], cinemaHall);
+            }
+
+            return insertSuccess;
+        }
+
+        private async Task<bool> CreateSeats(int startRow, int endRow, SeatCategory seatCategory, CinemaHall cinemaHall)
+        {
+            for (int i = startRow; i <= endRow; i++)
+            {
+                for (int j = 1; j <= cinemaHall.SeatAmount; j++)
+                {
+                    Seat seat = new Seat(j, i, cinemaHall, seatCategory);
+                    await DaoProvider.SeatDao.InsertAsync(seat);
+                }
+            }
+            return true;
         }
     }
 }

@@ -13,8 +13,9 @@
         <DataTemplate x:Key="seatTemplate">
             <Button Width="100">
                 <StackPanel>
-                    <TextBlock Text="{Binding SeatNumber}"/>
-                    <TextBlock Text="{Binding RowNumber}"/>
+                    <TextBlock>
+                        Seat: <Run Text="{Binding SeatNumber}"/>, Row: <Run Text="{Binding RowNumber}"/>
+                    </TextBlock>
                     <TextBlock Text="{Binding SeatCategory.Name}"/>
                 </StackPanel>
             </Button>
@@ -22,35 +23,32 @@
     </Window.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <TextBlock FontSize="50">
+                Total: <Run Text="{Binding Total, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>€
+            </TextBlock>
             <Button x:Name="cancelButton" PreviewMouseDown="cancelButton_PreviewMouseDown">Cancel</Button>
             <Button x:Name="completeButton" PreviewMouseDown="completeButton_PreviewMouseDown">Complete Reservation</Button>
         </StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Column="0" Grid.Row="0">
-                <TextBlock Text="{Binding Show.Movie.Title}"/>
-                <TextBlock Text="{Binding Show.Movie.Description}"/>
-                <TextBlock Text="{Binding Show.StartsAt}"/>
-                <TextBlock Text="{Binding Show.Movie.Genre}"/>
-                <TextBlock Text="{Binding Show.Movie.Length}"/>
-                <TextBlock Text="{Binding Show.CinemaHall.Name}"/>
-            </StackPanel>
-            <Image Grid.Column="1" Source="{Binding Show.Movie.ImageURL}"/>
-            <ListBox
-                Grid.Column="0"
-                Grid.Row="1"
-                x:Name="cinemaLayoutContainer"
-                ItemsSource="{Binding Seats}"
-                ItemTemplate="{StaticResource seatTemplate}"
-                PreviewMouseDown="cinemaLayoutContainer_PreviewMouseDown"
-            />
-        </Grid>
+        <ListBox
+            DockPanel.Dock="Right"
+            x:Name="cinemaLayoutContainer"
+            ItemsSource="{Binding Seats}"
+            ItemTemplate="{StaticResource seatTemplate}"
+            PreviewMouseDown="cinemaLayoutContainer_PreviewMouseDown"
+        />
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="{Binding Show.Movie.Title}" FontSize="50"/>
+            <TextBlock>
+                <Run Text="{Binding Show.StartsAt}"/> | <Run Text="{Binding Show.CinemaHall.Name}"/> | <Run Text="{Binding Show.Movie.Length}"/> Minutes
+            </TextBlock>
+            <TextBlock Text="{Binding Show.Movie.Description}"/>
+            <TextBlock>
+                Genre: <Run Text="{Binding Show.Movie.Genre}"/>
+            </TextBlock>
+            <TextBlock>
+                Cast: <Run Text="{Binding Show.Movie.Actors}"/>
+            </TextBlock>
+        </StackPanel>
+        <Image Source="{Binding Show.Movie.ImageURL}" MaxWidth="800"/>
     </DockPanel>
 </Window>

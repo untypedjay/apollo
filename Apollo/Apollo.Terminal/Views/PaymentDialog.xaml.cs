@@ -13,17 +13,17 @@ namespace Apollo.Terminal.Views
     public partial class PaymentDialog : Window
     {
 		private PaymentDialogViewModel paymentDialogViewModel;
-        public PaymentDialog(Seat seat)
+        public PaymentDialog(decimal total)
         {
             InitializeComponent();
-			paymentDialogViewModel = new PaymentDialogViewModel(seat, new PaymentService(), new PrintService());
+			paymentDialogViewModel = new PaymentDialogViewModel(total, new PaymentService(), new PrintService());
 			DataContext = paymentDialogViewModel;
 		}
 
 		private async void processPaymentButton_Click(object sender, RoutedEventArgs e)
 		{
 			DialogResult = true;
-			string errorMessage = await paymentDialogViewModel.HandlePayment(ccnInput.Text, 12.99m);
+			string errorMessage = await paymentDialogViewModel.HandlePayment(ccnInput.Text, paymentDialogViewModel.Total);
 
 			if (errorMessage != "")
             {
@@ -31,8 +31,9 @@ namespace Apollo.Terminal.Views
             }
             else
             {
-				paymentDialogViewModel.PrintTicket("827492", "The Wolf of Wallstreet", "December 22th, 2020 8pm", "Row: 6 Seat: 3", "12.99€");
-				MessageBox.Show("Payment successful!");
+				MessageBox.Show("Payment successful, printing ticket...");
+				paymentDialogViewModel.PrintTicket("827492", "The Wolf of Wallstreet", "December 22th, 2020 8pm", "Row: 6 Seat: 3", paymentDialogViewModel.Total.ToString());
+				MessageBox.Show("You can find your ticket on your desktop!");
 			}
 		}
 
