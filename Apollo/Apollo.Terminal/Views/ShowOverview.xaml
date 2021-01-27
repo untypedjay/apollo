@@ -12,12 +12,15 @@
 >
     <Window.Resources>
         <DataTemplate x:Key="showTemplate">
-            <StackPanel x:Name="showCard" Background="Yellow" Width="300">
+            <StackPanel x:Name="showCard" Width="300">
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="FontSize" Value="24"/>
                     </Style>
                 </StackPanel.Resources>
+                <StackPanel.Background>
+                    <ImageBrush/>
+                </StackPanel.Background>
                 <Image Source="{Binding Movie.ImageURL}"/>
                 <TextBlock Text="{Binding Movie.Title}"/>
                 <TextBlock Text="{Binding StartsAt}"/>

@@ -14,28 +14,28 @@ namespace Apollo.Core.Test.ServiceTests
         public async void GetAllShowsTest()
         {
             var shows = (ICollection<Show>)await showService.GetAllShows();
-            Assert.Equal(28, shows.Count);
+            Assert.Equal(35, shows.Count);
         }
 
         [Fact]
         public async void GetShowsByGenreSearchTest()
         {
             var shows = (ICollection<Show>)await showService.GetShowsByGenreSearch("Drama");
-            Assert.Equal(39, shows.Count);
+            Assert.Equal(0, shows.Count);
         }
 
         [Fact]
         public async void GetShowsByMovieSearchTest()
         {
             var shows = (ICollection<Show>)await showService.GetShowsByMovieSearch("Emma");
-            Assert.Equal(4, shows.Count);
+            Assert.Equal(7, shows.Count);
         }
 
         [Fact]
         public async void GetShowsTodayTest()
         {
             var shows = (ICollection<Show>)await showService.GetShowsToday();
-            Assert.Equal(4, shows.Count);
+            Assert.Equal(11, shows.Count);
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Apollo.Core.Test.ServiceTests
         public async void InsertAndDeleteTest()
         {
             var shows = (ICollection<Show>)await showService.GetAllShows();
-            Assert.Equal(28, shows.Count);
+            Assert.Equal(35, shows.Count);
             Movie movie = new Movie("Bird People", "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.", "Drama|Fantasy|Romance", 135.87, "Nikki Clyma", "http://dummyimage.com/243x250.bmp/ff4444/ffffff", "https://blinklist.com/consequat.json?sed=tempus&tincidunt=vivamus&eu=in&felis=felis&fusce=eu&posuere=sapien&felis=cursus&sed=vestibulum&lacus=proin&morbi=eu&sem=mi&mauris=nulla&laoreet=ac&ut=enim&rhoncus=in&aliquet=tempor&pulvinar=turpis&sed=nec&nisl=euismod&nunc=scelerisque&rhoncus=quam&dui=turpis&vel=adipiscing&sem=lorem&sed=vitae&sagittis=mattis&nam=nibh&congue=ligula&risus=nec&semper=sem&porta=duis&volutpat=aliquam&quam=convallis&pede=nunc&lobortis=proin&ligula=at&sit=turpis&amet=a&eleifend=pede&pede=posuere&libero=nonummy&quis=integer&orci=non&nullam=velit&molestie=donec&nibh=diam&in=neque&lectus=vestibulum&pellentesque=eget&at=vulputate&nulla=ut&suspendisse=ultrices&potenti=vel&cras=augue&in=vestibulum&purus=ante&eu=ipsum&magna=primis&vulputate=in&luctus=faucibus");
             CinemaHall cinemaHall = new CinemaHall("SAAL 2", 17, 22);
             Show show = new Show(new DateTime(2020, 11, 26, 12, 33, 48), movie, cinemaHall);
@@ -59,12 +59,12 @@ namespace Apollo.Core.Test.ServiceTests
             await showService.Insert(show);
 
             shows = (ICollection<Show>)await showService.GetAllShows();
-            Assert.Equal(29, shows.Count);
+            Assert.Equal(35, shows.Count);
 
             await showService.Delete(show);
 
             shows = (ICollection<Show>)await showService.GetAllShows();
-            Assert.Equal(28, shows.Count);
+            Assert.Equal(35, shows.Count);
         }
     }
 }

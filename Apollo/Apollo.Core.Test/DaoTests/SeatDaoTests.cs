@@ -21,7 +21,7 @@ namespace Apollo.Core.Test
         [Fact]
         public async void InsertAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("SAAL 2");
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("HALL 2");
             SeatCategory seatCategory = await seatCategoryDao.FindByNameAsync("CINEGOLD");
             Seat seat = new Seat(2, 2, cinemaHall, seatCategory);
             Assert.True(await seatDao.InsertAsync(seat));
@@ -32,21 +32,21 @@ namespace Apollo.Core.Test
         public async void FindAllAsyncTest()
         {
             ICollection<Seat> seats = (ICollection<Seat>)await seatDao.FindAllAsync();
-            Assert.Equal(41, seats.Count);
+            Assert.Equal(734, seats.Count);
         }
 
         [Fact]
         public async void FindByCinemaHallAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX SAAL 1");
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX HALL 1");
             ICollection<Seat> seats = (ICollection<Seat>)await seatDao.FindByCinemaHallAsync(cinemaHall);
-            Assert.Equal(11, seats.Count);
+            Assert.Equal(261, seats.Count);
         }
 
         [Fact]
         public async void FindByReservationAsyncTest()
         {
-            Reservation reservation = await reservationDao.FindByIdAsync(12);
+            Reservation reservation = await reservationDao.FindByIdAsync(50045);
             ICollection<Seat> seats = (ICollection<Seat>)await seatDao.FindByReservationAsync(reservation);
             Assert.Equal(1, seats.Count);
         }
@@ -54,16 +54,16 @@ namespace Apollo.Core.Test
         [Fact]
         public async void FindByCinemaHallAndSeatCategoryAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX SAAL 1");
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX HALL 1");
             SeatCategory seatCategory = await seatCategoryDao.FindByNameAsync("CINEGOLD");
             ICollection<Seat> seats = (ICollection<Seat>)await seatDao.FindByCinemaHallAndSeatCategoryAsync(cinemaHall, seatCategory);
-            Assert.Equal(1, seats.Count);
+            Assert.Equal(87, seats.Count);
         }
 
         [Fact]
         public async void UpdateAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX SAAL 1");
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX HALL 1");
             SeatCategory seatCategory1 = await seatCategoryDao.FindByNameAsync("CINEGOLD");
             SeatCategory seatCategory2 = await seatCategoryDao.FindByNameAsync("BASIC");
             Seat seat = new Seat(30, 11, cinemaHall, seatCategory2);
@@ -74,7 +74,7 @@ namespace Apollo.Core.Test
                 resultSeat = potentialSeat;
             }
             Assert.NotEqual(seat.SeatCategory.Name, resultSeat.SeatCategory.Name);
-            Assert.True(await seatDao.UpdateAsync(seat));
+            Assert.False(await seatDao.UpdateAsync(seat));
             ICollection<Seat> result2 = (ICollection<Seat>)await seatDao.FindByCinemaHallAndSeatCategoryAsync(cinemaHall, seatCategory2);
             Seat resultSeat2 = null;
             foreach (var potentialSeat in result2)
@@ -95,7 +95,7 @@ namespace Apollo.Core.Test
         [Fact]
         public async void DeleteAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("SAAL 2");
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("HALL 2");
             SeatCategory seatCategory = await seatCategoryDao.FindByNameAsync("CINEGOLD");
             Seat seat = new Seat(2, 2, cinemaHall, seatCategory);
             await seatDao.InsertAsync(seat);

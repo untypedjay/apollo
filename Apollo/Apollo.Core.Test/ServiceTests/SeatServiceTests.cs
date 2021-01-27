@@ -17,7 +17,7 @@ namespace Apollo.Core.Test.ServiceTests
             CinemaHall cinemaHall = new CinemaHall("SAAL 3", 23, 10);
             Show show = new Show(new DateTime(2020, 11, 01, 04, 46, 24), movie, cinemaHall);
             var reservedSeats = await seatService.GetReservedSeatsByShow(show);
-            Assert.Equal(3, reservedSeats.Count());
+            Assert.Equal(0, reservedSeats.Count());
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace Apollo.Core.Test.ServiceTests
         {
             CinemaHall cinemaHall = new CinemaHall("SAAL 3", 23, 10);
             var seats = await seatService.GetSeatsByCinemaHall(cinemaHall);
-            Assert.Equal(9, seats.Count());
+            Assert.Equal(0, seats.Count());
         }
     }
 }

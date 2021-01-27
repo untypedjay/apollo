@@ -27,7 +27,7 @@ namespace Apollo.Core.Test
         public async void FindAllAsyncTest()
         {
             ICollection<Movie> movies = (ICollection<Movie>) await movieDao.FindAllAsync();
-            Assert.Equal(101, movies.Count);
+            Assert.Equal(97, movies.Count);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace Apollo.Core.Test
         public async void FindByLengthGreaterAsyncTest()
         {
             ICollection<Movie> movies = (ICollection<Movie>)await movieDao.FindByLengthGreaterAsync(90.6);
-            Assert.Equal(80, movies.Count);
+            Assert.Equal(74, movies.Count);
         }
 
         [Fact]

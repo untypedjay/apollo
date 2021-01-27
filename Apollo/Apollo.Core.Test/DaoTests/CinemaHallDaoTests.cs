@@ -27,27 +27,27 @@ namespace Apollo.Core.Test
         public async void FindAllAsyncTest()
         {
             ICollection<CinemaHall> cinemaHalls = (ICollection<CinemaHall>)await cinemaHallDao.FindAllAsync();
-            Assert.Equal(13, cinemaHalls.Count);
+            Assert.Equal(5, cinemaHalls.Count);
         }
 
         [Fact]
         public async void FindByNameAsyncTest()
         {
-            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX SAAL 1");
-            Assert.Equal("IMAX SAAL 1", cinemaHall.Name);
+            CinemaHall cinemaHall = await cinemaHallDao.FindByNameAsync("IMAX HALL 1");
+            Assert.Equal("IMAX HALL 1", cinemaHall.Name);
         }
 
         [Fact]
         public async void UpdateAsyncTest()
         {
-            CinemaHall cinemaHall = new CinemaHall("SAAL 2", 23, 10);
-            CinemaHall result = await cinemaHallDao.FindByNameAsync("SAAL 2");
+            CinemaHall cinemaHall = new CinemaHall("HALL 2", 23, 10);
+            CinemaHall result = await cinemaHallDao.FindByNameAsync("HALL 2");
             Assert.NotEqual(cinemaHall.RowAmount, result.RowAmount);
             Assert.True(await cinemaHallDao.UpdateAsync(cinemaHall));
-            CinemaHall result2 = await cinemaHallDao.FindByNameAsync("SAAL 2");
+            CinemaHall result2 = await cinemaHallDao.FindByNameAsync("HALL 2");
             Assert.Equal(cinemaHall.RowAmount, result2.RowAmount);
             Assert.True(await cinemaHallDao.UpdateAsync(result));
-            CinemaHall result3 = await cinemaHallDao.FindByNameAsync("SAAL 2");
+            CinemaHall result3 = await cinemaHallDao.FindByNameAsync("HALL 2");
             Assert.NotEqual(cinemaHall.RowAmount, result3.RowAmount);
         }
 
