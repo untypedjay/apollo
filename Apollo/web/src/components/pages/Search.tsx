@@ -2,12 +2,12 @@ import React, {FormEvent, useState} from 'react';
 import Navbar from '../organisms/Navbar';
 import Footer from '../organisms/Footer';
 import Input from '../atoms/Input';
-import './Search.css';
 import Button from '../atoms/Button';
 import {searchByDate, searchByMovieTitle} from '../../helpers/search';
 import ShowContainer from '../templates/ShowContainer';
 import Empty from '../molecules/Empty';
 import Loader from '../atoms/Loader';
+import './Search.css';
 
 function Search() {
   const [movieSearch, setMovieSearch] = useState('');
@@ -60,8 +60,17 @@ function Search() {
       <Navbar/>
       <main className="search__main">
         <div className="search__search-bar">
-          <Input value={movieSearch} name="movie" onChange={handleInputChange}>Search by Movie</Input>
-          <Input type="datetime-local" value={dateSearch} name="date" onChange={handleInputChange}>Search by Date</Input>
+          <Input value={movieSearch} name="movie" onChange={handleInputChange}>
+            Search by Movie
+          </Input>
+          <Input
+            type="datetime-local"
+            value={dateSearch}
+            name="date"
+            onChange={handleInputChange}
+          >
+            Search by Date
+          </Input>
           <Button onClick={search}>Search</Button>
         </div>
         <div className="search__container">
