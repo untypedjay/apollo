@@ -1,0 +1,9 @@
+.shows {
+    background-color: var(--clr-secondary);
+    height: 100%;
+}
+
+.shows__container {
+    margin-top: var(--navbar-height);
+    min-height: 583px;
+}

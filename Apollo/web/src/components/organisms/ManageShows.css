@@ -1,0 +1,6 @@
+.manage-shows {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 100%;
+}

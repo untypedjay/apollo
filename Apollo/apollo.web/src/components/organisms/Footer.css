@@ -1,8 +1,0 @@
-.footer {
-    color: var(--clr-text);
-    background-color: var(--clr-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-}

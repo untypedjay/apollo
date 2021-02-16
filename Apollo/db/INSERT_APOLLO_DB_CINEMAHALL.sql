@@ -1,0 +1,13 @@
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('IMAX SAAL 1', 16, 30);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 2', 17, 22);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 3', 9, 19);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 4', 10, 10);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SUPREME SAAL 5', 8, 10);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 6', 13, 20);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 7', 17, 23);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 8', 11, 14);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 9', 11, 13);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 10', 11, 17);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 11', 11, 17);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 12', 8, 10);
+INSERT INTO CinemaHall (HallName, RowAmount, SeatAmount) VALUES ('SAAL 13', 8, 11);

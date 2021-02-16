@@ -1,0 +1,25 @@
+.show-details__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--clr-text);
+}
+
+.show-details__video {
+    width: 100%;
+    height: 400px;
+}
+
+.show-details__information {
+    padding: 0 1em;
+    display: flex;
+    gap: 1em;
+}
+
+.show-details__text--grey {
+    color: var(--clr-disabled);
+}
+
+.show-details__divider {
+    max-width: 60%;
+}

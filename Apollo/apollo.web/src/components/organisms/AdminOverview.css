@@ -1,6 +1,0 @@
-.admin-overview {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
-    height: 100%;
-}

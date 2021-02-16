@@ -1,0 +1,60 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    overflow-y: hidden;
+    z-index: 10;
+}
+
+.modal__card {
+    background-color: var(--clr-secondary);
+    position: absolute;
+    z-index: 1;
+    border-radius: var(--rds-card);
+}
+
+.modal__card--fullscreen {
+    width: 60%;
+    left: 20%;
+    top: 2%;
+    padding: 2.5em 0.1em 1em 0.1em;
+}
+
+.modal__card--small {
+    width: 46%;
+    left: 27%;
+    top: 8%;
+    padding: 1em 1.5em 1em 1.5em;
+}
+
+.modal__title {
+    color: var(--clr-text);
+    font-size: 1.3rem;
+}
+
+.modal__close-button {
+    position: absolute;
+    right: 0;
+    top: 0.1em;
+    border: none;
+    background-color: transparent;
+    height: 3em;
+}
+
+.modal__close-button:hover {
+    cursor: pointer;
+}
+
+.modal__icon {
+    fill: var(--clr-text);
+}
+
+.modal__footer {
+    display: flex;
+    padding-top: 1em;
+    justify-content: flex-end;
+    gap: 1em;
+}

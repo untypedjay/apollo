@@ -1,0 +1,8 @@
+.movie-modal__container {
+    display: flex;
+    gap: 0.8em;
+}
+
+.movie-modal__container--vertical {
+    flex-direction: column;
+}
