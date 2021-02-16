@@ -1,13 +1,6 @@
-import { Movie } from './movieService';
-import { CinemaHall } from './cinemaHallService';
+import {Show} from './interfaces/showInterface';
 
 const BASE_ENDPOINT = 'http://localhost:5000/api/shows';
-
-export type Show = {
-  startsAt: string,
-  movie: Movie,
-  cinemaHall: CinemaHall
-}
 
 export async function fetchShows() {
   return await fetch(BASE_ENDPOINT, {
